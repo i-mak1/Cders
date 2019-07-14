@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions',
   	passwords: 'admins/passwords'
   }
+  
   devise_for :endusers, path: 'endusers', controllers: {
   	sessions: 'endusers/sessions',
   	passwords: 'endusers/passwords',
