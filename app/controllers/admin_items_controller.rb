@@ -1,5 +1,6 @@
 class AdminItemsController < ApplicationController
   def index
+    @item = Items.all
   end
 
   def show
@@ -12,6 +13,7 @@ class AdminItemsController < ApplicationController
   end
 
   def new
+    @item = Items.new
   end
 
   def update
