@@ -5,22 +5,27 @@
 			<div class="col-md-6">
 				<h2>ユーザー情報</h2><br>
 				<div class="row">
-					<div class="col-md-6">氏名　姓</div>
-					<div class="col-md-6">氏名　名</div>
-					<div class="col-md-6">氏名　セイ</div>
-					<div class="col-md-6">氏名 メイ</div>
-					<ul>
-						<li> 郵便番号　</li>
-						<li> 住所</li>
-						<li> メールアドレス </li>
-						<li> 電話番号 </li>
-						<li> パスワード </li>
-					</ul>
+					<div class="col-md-6"><%= @enduser.first_name %></div>
+						<div class="col-md-6"><%= @enduser.last_name %></div>
+							<div class="col-md-6"><%= @enduser.first_name_kana %></div>
+								<div class="col-md-6"><%= @enduser.last_name_kana %></div>
+
+						<div class="col-md-12">
+							<ul>
+								<li><%= @shiping.shipping_postcode %></li>
+								<li><%= @shiping.shipping_address %></li>
+								<li><%= @enduser.email %></li>
+								<li><%= @enduser.tel %></li>
+								<li><%= @enduser.password %></li>
+							</ul>
+						</div>
+					<div class="col-md-6"><%= link_to "編集", edit_enduser_path, class: 'btn btn-default' %></div>
 				</div>
-				<div class="col-md-6"><%= link_to "編集", edit_enduser_path, class: 'btn btn-default' %></div>
 			</div>
-			<div class="col-md-6">
-				<h2>購入履歴</h2><br>
+		</div>
+	</div>
+		<div class="col-md-6">
+			<h2>購入履歴</h2><br>
 				<div>
 					<div class="container">
 						<div class="row">
@@ -35,13 +40,14 @@
 								</tr>
 							</table>
 							<table border><br>
-								<therd>
+								<thead>
 								<tr>
 									<th width="300">商品タイトル</th>
 									<th class="haba2">個数</th>
 									<th class="haba2">金額</th>
 								</tr>
-								</therd>
+
+								</thead>
 
 		<!--繰り返しの機能-->
 								<tbody>
@@ -53,21 +59,5 @@
 								</tr>
 									<%end%>
 								</tbody>
-								</table>
+							</table>
 						</div>
-
-
-
-<div class="col-md-6"><%= @enduser.name_first %></div>
-							<div class="col-md-6"><%= @enduser.name_last %></div>
-							<div class="col-md-6"><%= @enduser.name_first %></div>
-							<div class="col-md-6"><%= @enduser.neme_last %></div>
-							<div class="col-md-12">
-								<ul>
-									<li><%= @shiping.shipping_postcode %></li>
-									<li><%= @shiping.shipping_address %></li>
-									<li><%= @enduser.email %></li>
-									<li><%= @enduser.tel %></li>
-									<li><%= @enduser.password %></li>
-								</ul>
-							</div>
