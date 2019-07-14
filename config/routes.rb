@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-# usersコントローラー
-resources :users, only: [:show, :edit, :update]
-get 'users/:id/unsubscribe' => 'users#unsubscribe'
-get 'users/complete' => 'users#complete'
   devise_for :admins, path: 'admins', controllers: {
   	sessions: 'admins/sessions',
   	passwords: 'admins/passwords'
