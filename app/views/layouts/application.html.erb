@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Cders</title>
     <%= csrf_meta_tags %>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <nav class="row">
-        <ul class="nav-list" style="list-style-type: none">
+        <ul class="nav-list" style="list-style-type: none;">
         <% if enduser_signed_in? %>
           <li class="col-xs-2">
             <%= link_to 'My page', enduser_path(current_enduser.id) %>
@@ -48,7 +48,7 @@
             <%= link_to 'お問い合わせ', new_contact_path %>
           </li>
           <li class="col-xs-2 text-right">
-            <%= link_to 'カート', '#' %>
+            <%= link_to 'カート', "/carts/:id" %>
           </li>
         <% else %>
           <li class="col-xs-2">

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions',
   	passwords: 'admins/passwords'
   }
+  
   devise_for :endusers, path: 'endusers', controllers: {
   	sessions: 'endusers/sessions',
   	passwords: 'endusers/passwords',
@@ -28,7 +29,7 @@ get 'orders/complete' => 'orders#complete'
 #contactsコントローラー
 resources :contacts, only: [:new, :create]
 
-#admin_usersコントローラー
+#admin_endusersコントローラー
 resources :admin_endusers, only: [:index, :show, :edit, :update, :destroy]
 
 #admin_itemsコントローラー
