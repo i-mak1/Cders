@@ -1,2 +1,10 @@
-<h1>Users#unsubscribe</h1>
-<p>Find me in app/views/users/unsubscribe.html.erb</p>
+<h1>本当に退会しますか?</h1>
+<p>退会した場合・・・お客様の情報は削除されます。</p>
+
+<%= link_to endusers_complete_path do %>
+			<div class="btn btn-default">退会する</div>
+<% end %>
+
+<%= link_to enduser_path(current_enduser.id) do %>
+			<div class="btn btn-default">マイページに戻る</div>
+<% end %>
