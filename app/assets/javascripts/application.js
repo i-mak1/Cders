@@ -15,6 +15,7 @@
 //= require activestorage
 //= require bootstrap-sprockets
 //= require_tree ../../../vendor/assets/javascripts/.
+//= require cocoon
 
 //= require_tree .
 $(function(){

@@ -3,6 +3,7 @@ class AdminItemsController < ApplicationController
     @items = Item.all
   end
 
+
   def show
     @item = Item.find(params[:id])
   end
@@ -15,23 +16,25 @@ class AdminItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.disks.build
+    @disk = @item.disks.build
+    @song = @disk.songs.build
   end
 
   def create
     @item = Item.new(item_params)
-    @item.adminuser_id = current_adminuser.id
     @item.save
     flash[:notice] = "successfully item create"
-    redirect_to admin_items
+    redirect_to admin_items_path
   end
 
   def update
   end
 
-  private
-  def item_params
-      params.require(:item).permit(disks_attributes: [:disk_name])
-  end
+private
 
+  def item_params
+    params.require(:item)
+          .permit(:artist_name, :price, :label_name, :genre_name, :item_image, disks_attibutes: [:id, :disk_name, :_destroy], songs_attibutes: [:id, :song_name, :_destroy])
+
+  end
 end

@@ -1,0 +1,11 @@
+<h1>レーベル新規追加</h1>
+
+<%= form_for @label, :url => {:action => :create} do |f| %>
+<div>
+	<%= f.text_field :label_name %>
+</div>
+
+<div>
+	<%= f.submit '追加' %>
+</div>
+<% end %>
