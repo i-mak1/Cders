@@ -1,2 +1,28 @@
-<h1>AdminContacts#show</h1>
-<p>Find me in app/views/admin_contacts/show.html.erb</p>
+<div style="margin: 0 auto; text-align: center;">
+<h1>お問い合わせ確認</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div>
+				<h2> 名前</h2>
+				<p style="border: solid 1px;">姓 名</p>
+			</div>
+			<div>
+				<h2> メールアドレス</h2>
+				<div style="border: solid 1px;">メールアドレス</div>
+			</div>
+			<div>
+				<h2> 問い合わせ内容</h2>
+				<div style="border: solid 1px;">問い合わせ内容表示</div>
+			</div>
+			<div>
+				<h2> 問い合わせへの返信</h2>
+				<textarea name="contacts" placeholder="問い合わせ内容" style="width: 600px; height: 150px;"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="margin: 0 auto; text-align: center;">
+<%= link_to '送信', admin_contacts_path, class: "btn btn-default btn-lg" %>
+</div>

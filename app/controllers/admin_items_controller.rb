@@ -1,9 +1,10 @@
 class AdminItemsController < ApplicationController
   def index
-    @item = Items.all
+    @items = Item.all
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -13,22 +14,24 @@ class AdminItemsController < ApplicationController
   end
 
   def new
-    @item = Items.new
+    @item = Item.new
+    @item.disks.build
   end
 
   def create
-    @item = Items.new(item_params)
-    @item.user_id = current_user.id
-    if @item.save
-      flash[:notice] = "successfully item create"
-      redirect_to admin_items(@item.id)
-    else
-      @user = current_user
-      @items = Item.all
-      render :index
-    end
+    @item = Item.new(item_params)
+    @item.adminuser_id = current_adminuser.id
+    @item.save
+    flash[:notice] = "successfully item create"
+    redirect_to admin_items
   end
 
   def update
   end
+
+  private
+  def item_params
+      params.require(:item).permit(disks_attributes: [:disk_name])
+  end
+
 end

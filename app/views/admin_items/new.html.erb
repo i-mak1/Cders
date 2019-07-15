@@ -6,7 +6,8 @@
 			<h2> 商品内容編集</h2>
 			<% form_for @item do |f| %>
 			<div>
-				CDタイトル <%= f.text_field :disk_name %>
+				  <%= f.fields_for :disks do |d| %>
+       			 	CDタイトル<%= d.text_field :disk_name %>
 			</div>
 			<div>
 
