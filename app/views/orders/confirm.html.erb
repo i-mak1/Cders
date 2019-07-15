@@ -44,6 +44,7 @@
 			<p style="font-size: 30px;">商品の小計：　●● 円</p><br>
 			<p style="font-size: 30px;">送料     :  500 円</p><br><br>
 			<p style="font-size: 30px;">合計     :  ●● 円</p>
+			<%= link_to "注文を確定する", orders_complete_path, class: "btn btn-default" %>
 
 
 
@@ -62,7 +63,7 @@
 			<p>銀行振込</p>
 		</div>
 		<div class="col-lg-2" style="margin-top: 55px;">
-			<%= link_to "変更", new_order_path, class: "btn btn-default" %>
+			<%= link_to "変更", orders_payment_path, class: "btn btn-default" %>
 		</div>
 	</div>
 
@@ -94,7 +95,7 @@
 			</table>
 		</div>
 		<div class="col-lg-5" style="margin-top: 55px;">
-			<%= link_to "変更", class: "btn btn-default" %>
+			<%= link_to "変更", "/carts/:id", class: "btn btn-default" %>
 		</div>
 	</div>
 
