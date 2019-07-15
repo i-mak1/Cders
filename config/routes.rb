@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   	passwords: 'endusers/passwords',
   	registrations: 'endusers/registrations'
   }
-  resources :endusers, only: [:show, :edit, :update]
+
   get 'endusers/:id/unsubscribe' => 'endusers#unsubscribe'
   get 'endusers/complete' => 'endusers#complete'
-
+  resources :endusers, only: [:show, :edit, :update]
 # itemsコントローラー
 resources :items, only: [:index, :show, :create]
 

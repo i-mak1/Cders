@@ -1,11 +1,11 @@
 class AdminItemsController < ApplicationController
   def index
-    @item = Items.all
+    @items = Item.all
   end
 
 
   def show
-
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -29,7 +29,6 @@ class AdminItemsController < ApplicationController
 
   def update
   end
-
 
 private
 
