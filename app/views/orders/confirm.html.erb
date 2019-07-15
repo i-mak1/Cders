@@ -1,2 +1,113 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+
+<div class="container">
+<div class="row">
+
+
+	<div class="col-lg-8">
+		<h1 style="margin-bottom: 30px;"><span class="label label-default">注文内容の確認・変更</span></h1>
+	</div>
+
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+
+	<div  style="margin-bottom: 50px;">
+		<div class="col-lg-5">
+			<h2>送付先</h2>
+			<table border>
+				<tr>
+					<td width="200"> セイ</td>
+					<td width="200"> メイ</td>
+				</tr>
+				<tr>
+					<td width="200"> 姓</td>
+					<td width="200"> 名</td>
+				</tr>
+				<tr>
+					<td width="200"> 郵便番号</td>
+				</tr>
+				<tr>
+					<td width="200">住所 <br><br></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-lg-2" style="margin-top: 130px;">
+			<%= link_to "変更", new_order_path, class: "btn btn-default" %>
+		</div>
+		<div class="col-lg-5" style="border: solid;">
+			<h2> 注文内容</h2><br>
+			<p style="font-size: 30px;">商品の小計：　●● 円</p><br>
+			<p style="font-size: 30px;">送料     :  500 円</p><br><br>
+			<p style="font-size: 30px;">合計     :  ●● 円</p>
+			<%= link_to "注文を確定する", orders_complete_path, class: "btn btn-default" %>
+
+
+
+		</div>
+	</div>
+
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+
+	<div  style="margin-bottom: 50px;">
+		<div class="col-lg-5">
+			<h2>支払方法</h2>
+			<p>銀行振込</p>
+		</div>
+		<div class="col-lg-2" style="margin-top: 55px;">
+			<%= link_to "変更", orders_payment_path, class: "btn btn-default" %>
+		</div>
+	</div>
+
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+
+	<div>
+		<div class="col-lg-7" style="border: solid;">
+			<h2>注文明細</h2>
+			<table>
+
+				<thead>
+					<tr>
+						<th>品名</th>
+						<th>数量</th>
+						<th>小計</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>eachdo品名</td>
+						<td>eachdo数量</td>
+						<td>eachdo小計</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-5" style="margin-top: 55px;">
+			<%= link_to "変更", "/carts/:id", class: "btn btn-default" %>
+		</div>
+	</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Cders</title>
     <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
   </head>
 
   <body>
-  <header>
+  <header style="border-bottom: solid;">
     <div class="container">
       <div class="row">
         <div class="col-xs-3">
@@ -19,20 +19,26 @@
             <%= link_to edit_enduser_path(current_enduser.id) do %>
               <%= current_enduser.first_name + current_enduser.last_name %>
             <% end %>
+          <% elsif admin_signed_in? %>
+            <%= "管理者用" %>
           <% end %>
         </div>
         <div class="col-xs-3 col-xs-offset-9 input-group">
-            <input type="text" class="form-control" placeholder="検索キーワード">
+            <input type="text" class="form-control" placeholder="商品検索">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default">検索</button>
             </span>
         </div>
       </div>
       <div class="row">
-        <div class="rogo"><h1 class="text-center">Cders</h1></div>
+        <div class="rogo">
+          <h1 class="text-center">
+            <%= link_to 'Cders', items_path %>
+          </h1>
+        </div>
       </div>
       <nav class="row">
-        <ul class="nav-list" style="list-style-type: none">
+        <ul class="nav-list" style="list-style-type: none;">
         <% if enduser_signed_in? %>
           <li class="col-xs-2">
             <%= link_to 'My page', enduser_path(current_enduser.id) %>
@@ -44,7 +50,26 @@
             <%= link_to 'お問い合わせ', new_contact_path %>
           </li>
           <li class="col-xs-2 text-right">
-            <%= link_to 'カート', '#' %>
+            <%= link_to 'カート', "/carts/:id" %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="col-xs-2">
+            <%= link_to '商品一覧', admin_items_path %>
+          </li>
+          <li class="col-xs-2">
+            <%= link_to "ユーザー一覧", admin_endusers_path %>
+          </li>
+          <li class="col-xs-2">
+            <%= link_to "お問い合わせ一覧", admin_contacts_path %>
+          </li>
+          <li class="col-xs-2 text-right">
+            <%= link_to "受注一覧", admin_orders_path %>
+          </li>
+          <li class="col-xs-2 text-right">
+            <%= link_to '商品新規追加', new_admin_item_path %>
+          </li>
+          <li class="col-xs-2 text-right">
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
           </li>
         <% else %>
           <li class="col-xs-2">
@@ -59,7 +84,8 @@
     </div>
   </header>
     <%= yield %>
-    <footer class="container">
+    <footer style="border-top: solid;">
+    <div class="container">
       <p class="text-center">@cders</p>
       <div class="row">
         <div class="col-xs-1 col-xs-offset-11">
@@ -68,6 +94,7 @@
           <% end %>
         </div>
       </div>
+    </div>
     </footer>
   </body>
 </html>

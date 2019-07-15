@@ -13,18 +13,18 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree ../../../vendor/assets/javascripts/.
+//= require cocoon
 
 //= require_tree .
+$(function(){
 $("document").ready(function(){
-	$("#theTarget").skippr();
-});
+
 
 $("#theTarget").skippr({
 
-	transition : 'fade',
+	transition : 'slide',
 
 	speed : 1000,
 
@@ -43,4 +43,7 @@ $("#theTarget").skippr({
 	keyboardOnAlways : true,
 
 	hidePrevious : false
+});
+});
+
 });

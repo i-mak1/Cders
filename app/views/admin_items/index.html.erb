@@ -1,8 +1,12 @@
 <!-- 管理者側商品一覧 -->
+
 <div style="text-align: center; margin-bottom: 30px;">
 <h1>商品一覧</h1>
 </div>
 <div class="container">
+	<% if flash[:notice] %>
+		  <p><%= flash[:notice] %></p>
+			<% end %>
 	<div class="row">
 		<div class="col-lg-12">
 <!-- 一商品 -->

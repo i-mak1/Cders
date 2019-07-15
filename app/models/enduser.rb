@@ -3,7 +3,7 @@ class Enduser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_many :orders, dependent: :destroy
   has_many :shippings, dependent: :destroy
   has_many :contacts, dependent: :destroy
@@ -16,5 +16,13 @@ class Enduser < ApplicationRecord
   validates :postcode, presence: true
   validates :address, presence: true
   validates :tel, presence: true
+
+  def active_for_authentication?
+    super && !self.is_deleted?
+  end
+
+  def inactive_message
+    !self.is_deleted? ? super : :special_condition_is_not_valid
+  end
 
 end

@@ -1,22 +1,29 @@
-<h1>現在のカート内</h1>
-<table class="table table-borderd">
-	<thead>
-		<tr>
-			<th>品名</th>
-			<th>単価</th>
-			<th>数量</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>購入予定商品</td>
-			<td>￥1000</td>
-			<td>1</td>
-			<td>削除</td>
-		</tr>
-	</tbody>
-</table>
-<button type="button">配送先住所選択へ進む</button>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h1>現在のカート内</h1>
+			<table class="table table-borderd">
+				<thead>
+					<tr>
+						<th>品名</th>
+						<th>単価</th>
+						<th>数量</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>購入予定商品</td>
+						<td>￥1000</td>
+						<td>1</td>
+						<td>削除</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 
-test
+<%= link_to "/orders/new" do %>
+<button class="btn btn-default center-block">配送先住所選択へ進む</button>
+<% end %>
