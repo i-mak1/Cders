@@ -17,13 +17,13 @@
 				</div>
 
 				<% @item.disks.each do |disk| %>
-					<% disk.songs.each do |song| %>
 						<div class="col-lg-12" style="font-size: 15px; border: solid 1px;">
-									<div class="col-lg-12" style="font-size: 20px;">ディスク:<%= disk.disk_name %></div>
+									<div class="col-lg-12" style="font-size: 20px;">ディスク名:<%= disk.disk_name %></div>
 									<div class="col-lg-12" style="font-size: 20px;">~収録曲~</div>
+									<% disk.songs.each do |song| %>
 									<div class="col-lg-12"><%= song.track %>,<%= song.song_name %></div>
+									<% end %>
 						</div>
-					<% end %>
 				<% end %>
 		</div>
 		<div class="col-lg-3">

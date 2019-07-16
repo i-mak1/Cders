@@ -36,13 +36,13 @@ class AdminItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to admin_items_path(@item)
+    redirect_to admin_item_path(@item)
   end
 
 private
 
   def item_params
-    params.require(:item).permit(:item_name, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attributes: [:id, :disk_name, :_destroy, songs_attributes: [:id, :song_name, :track, :_destroy]])
+    params.require(:item).permit(:item_name, :stock_number, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attributes: [:id, :disk_name, :_destroy, songs_attributes: [:id, :song_name, :track, :_destroy]])
 
   end
 end
