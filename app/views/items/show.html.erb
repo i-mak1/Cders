@@ -8,11 +8,11 @@
 				<div class="col-lg-6">
 					<div>
 							<div id="item-info"><%= @item.item_name %></div>
-							<div id="item-info">アーティスト名</div>
-							<div id="item-info">価格(税込)　1000円</div>
-							<div id="item-info">売り切れ</div>
-							<div id="item-info">レーベル: ooo</div>
-							<div id="item-info">ジャンル: ooo</div>
+							<div id="item-info"><%= @item.artist.artist_name %></div>
+							<div id="item-info"><%= @item.price %>円</div>
+							<div id="item-info"><%= @item.item_status %></div>
+							<div id="item-info">レーベル:<%= @item.label.label_name %></div>
+							<div id="item-info">ジャンル:<%= @item.genre.genre_name %></div>
 					</div>
 				</div>
 				<div class="col-lg-12" style="text-align: center; font-size: 30px; margin-top: 30px;">収録曲</div>
