@@ -10,16 +10,16 @@
 	<div class="row">
 		<div class="col-lg-12">
 <!-- 一商品 -->
+<% @items.each do |item| %>
 			<div id="box">
 				<table style="text-align: center;">
 					<tbody>
 					<tr>
 					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
 					  </td>
 					</tr>
 					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
+					  <td><%= link_to item.item_name, item_path(item) %></td>
 					</tr>
 					<tr>
 					  <td>アーティスト名</td>
@@ -33,207 +33,7 @@
 					</tbody>
 				</table>
 			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
-<!-- 一商品 -->
-			<div id="box">
-				<table style="text-align: center;">
-					<tbody>
-					<tr>
-					  <td>
-						<img src=assets/test1.jpg height="150" width="200">
-					  </td>
-					</tr>
-					<tr>
-					  <td><%= link_to "商品名", "items" %></td>
-					</tr>
-					<tr>
-					  <td>アーティスト名</td>
-					</tr>
-					<tr>
-					  <td>値段：　1000円</td>
-					</tr>
-					<tr>
-					  <td>在庫：　oo　枚</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 一区切り -->
+<% end %>
 <!-- kaminariここに入れる -->
 		</div>
 	</div>

@@ -23,7 +23,7 @@ class AdminItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    flash[:notice] = "successfully item create"
+    flash[:notice] = "successfully  create"
     redirect_to admin_items_path
   end
 
