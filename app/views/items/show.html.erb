@@ -2,13 +2,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<% form_for(@item) do |item| %>
 				<div class="col-lg-6">
-					<%= attachment_image_tag item, :image, :fill, 300, 300, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %>
+					<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
 				</div>
 				<div class="col-lg-6">
 					<div>
-							<div id="item-info">CDタイトル</div>
+							<div id="item-info"><%= @item.item_name %></div>
 							<div id="item-info">アーティスト名</div>
 							<div id="item-info">価格(税込)　1000円</div>
 							<div id="item-info">売り切れ</div>
@@ -26,9 +25,8 @@
 				</div>
 			</div>
 		<div class="col-lg-3">
-			<%= link_to 'カートに入れる', , class: "btn btn-default btn-lg" %>
+			<%= link_to 'カートに入れる', cart_path,  class: "btn btn-default btn-lg" %>
 		</div>
-		<% end %>
 	</div>
 </div>
 
