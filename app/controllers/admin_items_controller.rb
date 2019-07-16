@@ -9,9 +9,15 @@ class AdminItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @disk = @item.disks.build
+    @song = @disk.songs.build
   end
 
   def destroy
+      @item = Item.find(params[:id])
+      @item.destroy
+      redirect_to admin_items_path
   end
 
   def new
@@ -28,6 +34,9 @@ class AdminItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to admin_items_path(@item)
   end
 
 private
