@@ -15,6 +15,7 @@
 							<div id="item-info">ジャンル:<%= @item.genre.genre_name %></div>
 					</div>
 				</div>
+
 				<% @item.disks.each do |disk| %>
 					<% disk.songs.each do |song| %>
 						<div class="col-lg-12" style="font-size: 15px; border: solid 1px;">
