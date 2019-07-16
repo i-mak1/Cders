@@ -11,10 +11,10 @@ accepts_nested_attributes_for :disks, allow_destroy: true
 accepts_nested_attributes_for :disks
 
 
-belongs_to :artist,optional: true
+belongs_to :artist
 
-belongs_to :genre, optional: true
+belongs_to :genre
 
-belongs_to :label, optional: true
+belongs_to :label
 
 end
