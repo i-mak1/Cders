@@ -38,11 +38,19 @@
 				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => true %>
 			</div>
 
-			<div id="disks">
-  			<%= f.fields_for :disks do |disk| %>
-    		<%= render 'disk_fields', f: disk %>
-  			<% end %>
-			<%= link_to_add_association 'add disk', f, :disks %>
+			<div>
+				<h3>ディスク</h3>
+	  			<%= f.fields_for :disks do |disk| %>
+	    		<%= render 'disk_fields', f: disk %>
+	  			<% end %>
+			</div>
+			<div class="links">
+				<%= link_to_add_association 'ディスク追加', f, :disks %>
+			</div>
+
+			<div>
+				<h3>追加枚数</h3>
+				<%= f.number_field :stock_number %>
 			</div>
 
 			<div>
