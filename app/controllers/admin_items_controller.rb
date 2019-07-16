@@ -5,7 +5,7 @@ class AdminItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.includes(:disks => :songs).find(params[:id])
   end
 
   def edit
@@ -34,7 +34,8 @@ private
 
   def item_params
     params.require(:item)
-          .permit(:artist_id, :price, :label_name, :genre_name, :item_image, disks_attibutes: [:id, :disk_name, :_destroy], songs_attibutes: [:id, :song_name, :_destroy])
+
+          .permit(:item_name, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attibutes: [:disk_id, :disk_name, :_destroy], songs_attibutes: [:song_id, :song_name, :track, :_destroy])
 
   end
 end
