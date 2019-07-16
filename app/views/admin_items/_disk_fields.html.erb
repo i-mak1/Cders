@@ -3,13 +3,15 @@
     <h3>ディスク名</h3>
     <%= f.text_field :disk_name %>
   </div>
-  <%= link_to_remove_association "remove disk", f %>
-  	<h3>曲名・曲順</h3>
-</div>
 
 	<div id="songs">
+      <h3>曲名・曲順</h3>
   		<%= f.fields_for :songs do |song| %>
     		<%= render 'song_fields', f: song %>
   		<% end %>
   		<%= link_to_add_association 'add song', f, :songs %>
   	</div>
+  <div>
+  <%= link_to_remove_association "remove disk", f %>
+</div>
+</div>
