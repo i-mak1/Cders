@@ -4,8 +4,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<h2> 商品新規追加</h2>
-			<%= form_for @item do |f| %>
-
+			<%= form_for(@item, :url => {:controller => :admin_items, :action => :create}) do |f| %>
 
 			<div>
 				<h3>CDタイトル</h3>
