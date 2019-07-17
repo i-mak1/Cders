@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.text :contact
       t.text :reply
       t.boolean :is_deleted
-      t.integer :user_id
+      t.integer :enduser_id
 
       t.timestamps
     end
