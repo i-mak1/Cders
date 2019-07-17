@@ -22,14 +22,14 @@
 					<tbody>
 					<tr>
 					  <td>
-						<%= attachment_image_tag item, :image, :fill, 200, 150, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %>
+						<%= attachment_image_tag item, :item_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
 					  </td>
 					</tr>
 					<tr>
 					  <td><%= link_to item.item_name, item_path(item[:id]) %></td>
 					</tr>
 					<tr>
-					  <td><%= item.price %></td>
+					  <td><%= item.price %>円</td>
 					</tr>
 					<tr>
 					  <td><%= item.item_status %></td>
@@ -38,7 +38,9 @@
 				</table>
 			</div>
 <% end %>
+<div style="text-align: center; font-size: 25px;">
 <%= paginate @items, class: "paginate" %>
+</div>
 		</div>
 <!-- ランキング -->
 
