@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'shippings/new'
   get 'admin_labels/new'
   get 'admin_artists/new'
   devise_for :admins, path: 'admins', controllers: {
@@ -50,6 +51,9 @@ resources :admin_artists, only: [:new, :create]
 
 #admin_labelsコントローラー
 resources :admin_labels, only: [:new, :create]
+
+#shippingsコントローラー
+resources :shippings, only: [:new, :create]
 
 root 'items#index'
 end
