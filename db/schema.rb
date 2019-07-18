@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_105023) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "enduser_id"
+    t.integer "user_id"
     t.integer "item_id"
   end
 
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_105023) do
     t.text "contact"
     t.text "reply"
     t.boolean "is_deleted"
-    t.integer "enduser_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_105023) do
     t.integer "order_status"
     t.integer "shipping_fee"
     t.boolean "is_deleted"
-    t.integer "enduser_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2019_07_15_105023) do
     t.string "shipping_postcode"
     t.text "shipping_address"
     t.boolean "is_delete"
-    t.integer "enduser_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
