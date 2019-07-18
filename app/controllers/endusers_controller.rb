@@ -1,11 +1,12 @@
 class EndusersController < ApplicationController
   def show
     @enduser = Enduser.find(current_enduser.id)
-    @shipping = Shipping.find(params[:id])
+    @shipping = Shipping.where(user_id:current_enduser.id)
+    @order = Order.where(user_id:current_enduser.id)
   end
 
   def edit
-    @enduser = Enduser.find(params[:id])
+    @enduser = Enduser.find(current_enduser.id)
   end
 
   def update

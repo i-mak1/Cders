@@ -9,13 +9,12 @@
 					<div>
 							<div id="item-info"><%= @item.item_name %></div>
 							<div id="item-info"><%= @item.artist.artist_name %></div>
-							<div id="item-info"><%= @item.price %>円</div>
+							<div id="item-info">（税込）<%= (@item.price * BigDecimal("1.08")).round %>円</div>
 							<% if @item.stock_number == 0 %>
-							<div style="color: red;">
+							<div id="item-info" style="color: red;">
 							  	<strong>売り切れ</strong>
 							</div>
 							<% end %>
-							<div id="item-info"><%= @item.item_status %></div>
 							<div id="item-info">レーベル:<%= @item.label.label_name %></div>
 							<div id="item-info">ジャンル:<%= @item.genre.genre_name %></div>
 					</div>

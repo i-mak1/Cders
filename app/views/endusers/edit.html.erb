@@ -5,35 +5,33 @@
 			<div class="form-horizontal" role="form">
 				<%= form_for @enduser do |f| %>
               	<div class="form-group">
-						<%= f.label :first_name, "名前" , :class => "control-label" %>
-						<%= f.text_field :first_name, class: 'form-control',placeholder:"姓",id:"half-form1" %>
-						<%= f.label :last_name,:class => " control-label" %>
-				       	<%= f.text_field :last_name, class: 'form-control',placeholder:"名",id:"half-form1" %>
+						<h4>名前</h4>
+						<%= f.text_field :first_name, class: 'form-control',placeholder:"姓",id:"half-form1" %><br>
+				       	<%= f.text_field :last_name, class: 'form-control',placeholder:"名",id:"half-form1" %><br>
 	       		</div>
 				<div class="form-group">
-						<%= f.label :first_name_kana, :class => " control-label" %>
-						<%= f.text_field :first_name_kana, class: 'form-control',placeholder:"セイ",id:"half-form2" %>
-						<%= f.label :last_name_kana , :class => " control-label" %>
+						<h4>名前（カナ）</h4>
+						<%= f.text_field :first_name_kana, class: 'form-control',placeholder:"セイ",id:"half-form2" %><br>
 						<%= f.text_field :last_name_kana, class: 'form-control',placeholder:"メイ",id:"half-form2" %><br>
              	</div>
              	<div class="form-group">
-				       <%= f.label :postcode, :class => " control-label" %>
+             			<h4>郵便番号</h4>
 				       <%= f.number_field :postcode, class: 'form-control',placeholder:"郵便番号" %><br>
 				</div>
                 <div class="form-group">
-				       <%= f.label :address, :class => " control-label" %>
+                		<h4>住所</h4>
 				       <%= f.text_field :address, class: 'form-control',placeholder:"住所" %><br>
 				</div>
                 <div class="form-group">
-				       <%= f.label :tel, :class => " control-label" %>
+                		<h4>電話番号</h4>
 				       <%= f.telephone_field :tel, class: 'form-control',placeholder:"電話番号" %><br>
 				</div>
 				<div class="form-group">
-				       <%= f.label :encrypted_password, :class => " control-label" %>
+						<h4>パスワード</h4>
 				       <%= f.telephone_field :encrypted_password, class: 'form-control',placeholder:"パスワード" %><br>
 				</div>
 				<div class="form-group">
-				       <%= f.label :reset_password_token, :class => " control-label" %>
+						<h4>パスワード確認</h4>
 				       <%= f.telephone_field :reset_password_token, class: 'form-control',placeholder:"パスワード確認" %><br>
 				</div>
 				<div class="form-group">
