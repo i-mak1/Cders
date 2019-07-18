@@ -9,15 +9,21 @@
 						<th>単価</th>
 						<th>数量</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>購入予定商品</td>
-						<td>￥1000</td>
-						<td>1</td>
-						<td>削除</td>
-					</tr>
+					<% @cart.each do |cart| %>
+						<tr>
+							<td><%= cart.item.item_name %></td>
+							<td><%= cart.item.price %></td>
+							<%= form_for cart do |f| %>
+								<td><%= f.number_field :quantity %></td>
+								<td><%= f.submit '数量変更' %></td>
+							<% end %>
+							<td><%= link_to "削除", cart_path(cart.id), method: :delete %></td>
+						</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>
