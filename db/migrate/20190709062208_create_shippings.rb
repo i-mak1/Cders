@@ -8,7 +8,7 @@ class CreateShippings < ActiveRecord::Migration[5.2]
       t.string :shipping_postcode
       t.text :shipping_address
       t.boolean :is_delete
-      t.integer :user_id
+      t.integer :enduser_id
 
       t.timestamps
     end

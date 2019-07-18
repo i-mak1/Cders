@@ -2,33 +2,41 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<% form_for(@item) do |item| %>
 				<div class="col-lg-6">
-					<%= attachment_image_tag item, :image, :fill, 300, 300, format: 'jpeg', class: "img-circle profile-img", fallback: "no_image.jpg" %>
+					<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
 				</div>
 				<div class="col-lg-6">
 					<div>
-							<div id="item-info">CDタイトル</div>
-							<div id="item-info">アーティスト名</div>
-							<div id="item-info">価格(税込)　1000円</div>
-							<div id="item-info">売り切れ</div>
-							<div id="item-info">レーベル: ooo</div>
-							<div id="item-info">ジャンル: ooo</div>
+							<div id="item-info"><%= @item.item_name %></div>
+							<div id="item-info"><%= @item.artist.artist_name %></div>
+							<div id="item-info"><%= @item.price %>円</div>
+							<% if @item.stock_number == 0 %>
+							<div style="color: red;">
+							  	<strong>売り切れ</strong>
+							</div>
+							<% end %>
+							<div id="item-info"><%= @item.item_status %></div>
+							<div id="item-info">レーベル:<%= @item.label.label_name %></div>
+							<div id="item-info">ジャンル:<%= @item.genre.genre_name %></div>
 					</div>
 				</div>
-				<div class="col-lg-12" style="text-align: center; font-size: 30px; margin-top: 30px;">収録曲</div>
-				<div class="col-lg-12" style="font-size: 15px; border: solid 1px;">
-					<p>o1, 曲名１</p>
-					<p>02, 曲名１</p>
-					<p>03, 曲名１</p>
-					<p>04, 曲名１</p>
-					<p>05, 曲名１</p>
-				</div>
-			</div>
-		<div class="col-lg-3">
-			<%= link_to 'カートに入れる', , class: "btn btn-default btn-lg" %>
+				<% @item.disks.each do |disk| %>
+						<div class="col-lg-12" style="font-size: 15px; border: solid 1px;">
+									<div class="col-lg-12" style="font-size: 20px;">ディスク名:<%= disk.disk_name %></div>
+									<div class="col-lg-12" style="font-size: 20px;">~収録曲~</div>
+									<% disk.songs.each do |song| %>
+									<div class="col-lg-12"><%= song.track %>,<%= song.song_name %></div>
+									<% end %>
+						</div>
+				<% end %>
 		</div>
-		<% end %>
+		<div class="col-lg-3">
+			<%= form_for(@cart, :url => {:controller => :carts, :action => :create}) do |f| %>
+			<%= f.label :枚数 %>
+			<%= f.number_field :quantity %>
+			<%= f.submit 'カートに入れる' %>
+			<% end %>
+		</div>
 	</div>
 </div>
 

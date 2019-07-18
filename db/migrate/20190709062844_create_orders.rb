@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :order_status
       t.integer :shipping_fee
       t.boolean :is_deleted
-      t.integer :user_id
+      t.integer :enduser_id
 
       t.timestamps
     end

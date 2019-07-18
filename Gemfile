@@ -75,3 +75,5 @@ gem 'jquery-rails'
 gem 'ransack'
 
 gem 'cocoon'
+
+gem 'paranoia', '~> 2.3', '>= 2.3.1'

@@ -4,8 +4,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<h2> 商品新規追加</h2>
-			<%= form_for @item do |f| %>
-
+			<%= form_for(@item, :url => {:controller => :admin_items, :action => :create}) do |f| %>
 
 			<div>
 				<h3>CDタイトル</h3>
@@ -39,11 +38,24 @@
 				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => true %>
 			</div>
 
-			<div id="disks">
-  			<%= f.fields_for :disks do |disk| %>
-    		<%= render 'disk_fields', f: disk %>
-  			<% end %>
-			<%= link_to_add_association 'add disk', f, :disks %>
+			<div>
+				<h3>ディスク</h3>
+	  			<%= f.fields_for :disks do |disk| %>
+	    		<%= render 'disk_fields', f: disk %>
+	  			<% end %>
+			</div>
+			<div class="links">
+				<%= link_to_add_association 'ディスク追加', f, :disks %>
+			</div>
+
+			<div>
+				<h3>販売状態</h3>
+				<%= f.select :item_status, Item.item_statuses.keys, {}, class: "select-default" %>
+			</div>
+
+			<div>
+				<h3>追加枚数</h3>
+				<%= f.number_field :stock_number %>
 			</div>
 
 			<div>
