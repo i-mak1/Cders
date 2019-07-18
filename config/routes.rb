@@ -13,20 +13,21 @@ Rails.application.routes.draw do
   	registrations: 'endusers/registrations'
   }
 
-  get 'endusers/:id/unsubscribe' => 'endusers#unsubscribe'
-  get 'endusers/complete' => 'endusers#complete'
-  resources :endusers, only: [:show, :edit, :update]
-# itemsコントローラー
-resources :items, only: [:index, :show, :create]
+      get 'endusers/:id/unsubscribe' => 'endusers#unsubscribe'
+      get 'endusers/complete' => 'endusers#complete'
+      resources :endusers, only: [:show, :edit, :update]
+    # itemsコントローラー
+    resources :items, only: [:index, :show, :create]
 
-# cartsコントローラー
-resources :carts, only: [:show, :update, :destroy]
+    # cartsコントローラー
+    resources :carts, only: [:show, :update, :destroy]
+    post 'carts/:id/create' => 'carts#create', as: 'create_cart'
 
-#ordersコントローラー
-resources :orders, only: [:new, :create]
-get 'orders/payment' => 'orders#payment'
-get 'orders/confirm' => 'orders#confirm'
-get 'orders/complete' => 'orders#complete'
+    #ordersコントローラー
+    resources :orders, only: [:new, :create]
+    get 'orders/payment' => 'orders#payment'
+    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
 
 #contactsコントローラー
 resources :contacts, only: [:new, :create]
