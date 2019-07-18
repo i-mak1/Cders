@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def new
+    @shippings = current_enduser.shippings
   end
 
   def payment
@@ -8,9 +9,8 @@ class OrdersController < ApplicationController
   def confirm
   end
 
-  def create
-  end
 
   def complete
   end
+
 end
