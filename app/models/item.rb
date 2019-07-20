@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-
+acts_as_paranoid
 
 has_many :carts, dependent: :destroy
 has_many :disks, inverse_of: :item, dependent: :destroy
@@ -17,4 +17,11 @@ belongs_to :genre
 
 belongs_to :label
 
+	def self.search(search)
+		if search
+			where(['item_name LIKE ?', "%#{search}%"])
+		else
+			all
+		end
+	end
 end
