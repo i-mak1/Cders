@@ -9,7 +9,7 @@ attachment :item_image
 
 accepts_nested_attributes_for :disks, allow_destroy: true
 
-
+enum item_status: { 販売中: 1, 販売停止中: 2 }
 
 belongs_to :artist
 

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_104648) do
     t.datetime "updated_at", null: false
     t.integer "enduser_id"
     t.integer "item_id"
+    t.integer "quantity"
   end
 
   create_table "contacts", force: :cascade do |t|

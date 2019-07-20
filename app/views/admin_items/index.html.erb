@@ -15,22 +15,28 @@
 					<tbody>
 					<tr>
 					  <td>
-						<%= attachment_image_tag item, :item_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+						<%= attachment_image_tag item, :item_image, :fill, 270, 150, format: 'jpeg', fallback: "no_image.jpg" %>
 					  </td>
 					</tr>
 					<tr>
 					  <td><%= link_to item.item_name, admin_item_path(item[:id]) %></td>
 					</tr>
 					<tr>
-					  <td><%= item.price %>円</td>
+					  <td><%= item.artist.artist_name %></td>
 					</tr>
 					<tr>
-					  <td><%= item.item_status %></td>
+					  <td>値段:<%= item.price %>円</td>
+					</tr>
+					<tr>
+					  <td>在庫数:<%= item.stock_number %>枚</td>
 					</tr>
 					</tbody>
 				</table>
 			</div>
 			<% end %>
+			<div style="text-align: center; font-size: 25px;">
+			<%= paginate @items, class: "paginate" %>
+			</div>
 		</div>
 	</div>
 </div>

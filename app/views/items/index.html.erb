@@ -1,5 +1,7 @@
 <!-- ユーザー側商品一覧 -->
-
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 <!-- スライドショー部分 -->
 <div id="container">
         <div id="theTarget">
@@ -29,11 +31,15 @@
 					  <td><%= link_to item.item_name, item_path(item[:id]) %></td>
 					</tr>
 					<tr>
-					  <td><%= item.price %>円</td>
+					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
 					</tr>
+					<% if item.stock_number == 0 %>
 					<tr>
-					  <td><%= item.item_status %></td>
+					  <td style="color: red;">
+					  	<strong>売り切れ</strong>
+					  </td>
 					</tr>
+					<% end %>
 					</tbody>
 				</table>
 			</div>

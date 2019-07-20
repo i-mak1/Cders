@@ -1,6 +1,6 @@
 class AdminItemsController < ApplicationController
   def index
-    @items = Item.search(params[:search])
+    @items = Item.page(params[:page]).reverse_order.search(params[:search])
   end
 
 
@@ -42,7 +42,7 @@ class AdminItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:item_name, :stock_number, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attributes: [:id, :disk_name, :_destroy, songs_attributes: [:id, :song_name, :track, :_destroy]])
+    params.require(:item).permit(:item_status, :item_name, :stock_number, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attributes: [:id, :disk_name, :_destroy, songs_attributes: [:id, :song_name, :track, :_destroy]])
 
   end
 end
