@@ -31,9 +31,13 @@
 		</div>
 		<div class="col-lg-3">
 			<%= form_for(@cart, :url => {:controller => :carts, :action => :create}) do |f| %>
+			<% if @item.stock_number > 0 %>
+			<% if @user = current_enduser %>
 			<%= f.label :枚数 %>
 			<%= f.number_field :quantity %>
 			<%= f.submit 'カートに入れる' %>
+			<% end %>
+			<% end %>
 			<% end %>
 		</div>
 	</div>

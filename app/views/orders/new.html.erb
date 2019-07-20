@@ -5,35 +5,40 @@
 			<h2> お届け先住所選択</h2>
 			<h3 style="margin-bottom: 30px;"> 登録住所</h3>
 			<div class="container">
-				<div class="row" style="border: solid 1px; padding-bottom: 10px; padding-top: 10px;">
+				<div class="row">
 					<div class="col-lg-10">
-						<table>
-							<thead>
-								<tr>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @shippings.each do |shipping| %>
-									<tr>
-										<td width="200"> セイ:<%= shipping.shipping_first_name_kana %></td>
-										<td width="200"> メイ:<%= shipping.shipping_last_name_kana %></td>
-										<td width="200"> 姓:<%= shipping.shipping_first_name %></td>
-										<td width="200"> 名:<%= shipping.shipping_last_name %></td>
-										<td width="200"> 郵便番号:<%= shipping.shipping_postcode %></td>
-										<td width="200">住所:<%= shipping.shipping_address %></td>
-										<td><%= link_to 'この住所を使う', orders_payment_path, class: "btn btn-default btn-lg" %></td>
-									</tr>
-									</div>
-								<% end %>
-							</tbody>
-						</table>
+						<% @shippings.each do |shipping| %>
+						<div style=" font-size: 15px; margin-bottom: 15px; border: solid 1px; width:450px;">
+							<table>
+								<tbody>
+										<tr>
+											<td width="150"> セイ:<%= shipping.shipping_first_name_kana %></td>
+											<td width="150"> メイ:<%= shipping.shipping_last_name_kana %></td>
+										</tr>
+										<tr>
+											<td width="150"> 姓:<%= shipping.shipping_first_name %></td>
+											<td width="150"> 名:<%= shipping.shipping_last_name %></td>
+										</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody>
+										<tr>
+											<td width="200"> 〒<%= shipping.shipping_postcode %></td>
+										</tr>
+										<tr>
+											<td width="450">住所
+												<br><%= shipping.shipping_address %>
+											</td>
+										</tr>
+										<tr>
+											<td style="float: right; padding-bottom: 5px; padding-right: 5px;">
+											</style><%= link_to 'この住所を使う', orders_payment_path, class: "btn btn-default" %></td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+						<% end %>
 					</div>
 					<%= link_to "新しい送付先を追加", shippings_new_path, class: "btn btn-default btn-lg" %>
 				</div>

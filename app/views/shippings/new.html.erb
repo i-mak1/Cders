@@ -1,24 +1,29 @@
-<h3 style="margin-bottom: 30px;"> 新しい住所の追加</h3>
-					<%= form_for(@shipping, :url => {:controller => :shippings, :action => :create}) do |f| %>
-
-						<table border>
-							<tr>
-								<td width="200"> セイ:<%= f.text_field :shipping_first_name_kana %></td>
-								<td width="200"> メイ:<%= f.text_field :shipping_last_name_kana %></td>
-							</tr>
-							<tr>
-								<td width="200"> 姓:  <%= f.text_field :shipping_first_name %></td>
-								<td width="200"> 名:  <%= f.text_field :shipping_last_name %></td>
-							</tr>
-							<tr>
-								<td width="200"> 郵便番号:<%= f.text_field :shipping_postcode %></td>
-							</tr>
-							<tr>
-								<td width="200">住所:<%= f.text_field :shipping_address %><br><br></td>
-							</tr>
-							<tr>
-								<td><%= f.submit '送付先新規追加' ,class: "btn btn-default btn-lg"%></td>
-							</tr>
+<!-- 住所追加画面 -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h3 style="margin-bottom: 30px;"> 新しい住所の追加</h3>
+			<%= form_for(@shipping, :url => {:controller => :shippings, :action => :create}) do |f| %>
+					<table>
+						<tr>
+							<td width="200"> セイ:<%= f.text_field :shipping_first_name_kana, class: 'form-control',placeholder:"セイ" %></td>
+							<td width="200"> メイ:<%= f.text_field :shipping_last_name_kana, class: 'form-control',placeholder:"メイ" %></td>
+						</tr>
+						<tr>
+							<td width="200"> 姓:<%= f.text_field :shipping_first_name, class: 'form-control',placeholder:"姓" %></td>
+							<td width="200"> 名:<%= f.text_field :shipping_last_name, class: 'form-control',placeholder:"名" %></td>
+						</tr>
+						<tr>
+							<td width="200"> 郵便番号:<%= f.text_field :shipping_postcode, class: 'form-control',placeholder:"例:000-0000" %></td>
+						</tr>
+						<tr>
+							<td width="200">住所:<%= f.text_area :shipping_address, class: 'form-control',placeholder:"送付先の住所" %><br><br></td>
+						</tr>
+						<tr>
+							<td><%= f.submit '送付先新規追加' ,class: "btn btn-default btn-lg"%></td>
+						</tr>
 						</table>
-
-					<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
