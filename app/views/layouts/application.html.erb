@@ -23,17 +23,24 @@
             <%= "管理者用" %>
           <% end %>
         </div>
-        <div class="col-xs-3 col-xs-offset-9 input-group">
-            <input type="text" class="form-control" placeholder="商品検索">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default">検索</button>
-            </span>
+        <div class="col-xs-3 col-xs-offset-9">
+          <% if admin_signed_in? %>
+            <%= form_tag admin_items_path, method: :get do %>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag '検索', :name => nil %>
+            <% end %>
+          <% else %>
+            <%= form_tag root_path, method: :get do %>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag '検索', :name => nil %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="rogo">
           <h1 class="text-center">
-            <%= link_to 'Cders', items_path %>
+            <%= link_to 'Cders', root_path %>
           </h1>
         </div>
       </div>

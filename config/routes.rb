@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   get 'endusers/complete' => 'endusers#complete'
   resources :endusers, only: [:show, :edit, :update]
 # itemsコントローラー
-resources :items, only: [:index, :show, :create]
+resources :items, only: [:index, :show, :create] do
+  collection do
+    get 'search' => 'items#search'
+  end
+end
+
 
 # cartsコントローラー
 resources :carts, only: [:show, :update, :destroy]
