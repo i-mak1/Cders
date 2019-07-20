@@ -28,15 +28,22 @@ class AdminItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save!
-    flash[:notice] = "successfully item create"
-    redirect_to admin_items_path
+    if @item.save
+       flash[:notice] = "successfully item update"
+       redirect_to admin_items_path
+    else
+       render :new
+    end
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_item_path(@item)
+    if @item.update(item_params)
+       flash[:notice] = "successfully item create"
+       redirect_to admin_item_path(@item)
+    else
+       render :edit
+    end
   end
 
 private
@@ -46,3 +53,4 @@ private
 
   end
 end
+
