@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_093228) do
+ActiveRecord::Schema.define(version: 2019_07_17_104648) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_093228) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.integer "enduser_id"
     t.integer "item_id"
     t.integer "quantity"
   end
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_093228) do
     t.text "contact"
     t.text "reply"
     t.boolean "is_deleted"
-    t.integer "user_id"
+    t.integer "enduser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_093228) do
     t.integer "label_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_items_on_deleted_at"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -131,7 +133,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_093228) do
     t.integer "order_status"
     t.integer "shipping_fee"
     t.boolean "is_deleted"
-    t.integer "user_id"
+    t.integer "enduser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -144,7 +146,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_093228) do
     t.string "shipping_postcode"
     t.text "shipping_address"
     t.boolean "is_delete"
-    t.integer "user_id"
+    t.integer "enduser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
