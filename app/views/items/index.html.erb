@@ -31,6 +31,9 @@
 					  <td><%= link_to item.item_name, item_path(item[:id]) %></td>
 					</tr>
 					<tr>
+					  <td><%= item.artist.artist_name %></td>
+					</tr>
+					<tr>
 					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
 					</tr>
 					<% if item.stock_number == 0 %>

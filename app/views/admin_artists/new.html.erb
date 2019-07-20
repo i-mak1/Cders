@@ -1,5 +1,18 @@
 <h1>アーティスト新規追加</h1>
 
+<%= form_for(@artist, :url => {:controller => :admin_artists, :action => :create}) do |f| %>
+<% if @artist.errors.any? %>
+<div id="error_explanation" style="color: red;">
+	<h3> <%= @artist.errors.count %>件のエラーが発生しました。</h3>
+	<ul>
+		<% @artist.errors.full_messages.each do |message| %>
+		<li> <%= message %> </li>
+	<% end %>
+	</ul>
+</div>
+<% end %>
+<% end %>
+
 <%= form_for @artist, :url => {:action => :create} do |f| %>
 <div>
 	<%= f.text_field :artist_name %>
