@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>ユーザー情報</h2><br>
+					<ul>
+						<li>
+							<%= @enduser.first_name_kana  +  @enduser.last_name_kana %>
+						</li>
+						<li>
+							<%= @enduser.first_name + @enduser.last_name %>
+						</li>
+						<li>
+							<%= @enduser.postcode %>
+						</li>
+						<li>
+							<%= @enduser.address %>
+						</li>
+						<li>
+						<%= @enduser.email %>
+						</li>
+						<li>
+							<%= @enduser.tel %>
+						</li>
+						<li>
+							<%= @enduser.reset_password_token %>
+						</li>
+						<li>
+							<%= link_to "編集", edit_enduser_path, class: 'btn btn-default' %>
+						</li>
+					</ul>
+				</div>
+					<div class="col-md-6">
+						<h2>購入履歴</h2>
+						<table>
+						<% @order.each do |sk2| %>
+							<tr>
+							  <th class="haba">購入日</th>
+							  <td class="haba"><%= sk2.created_at %></td>
+							  <th class="haba">金額</th>
+							  <td>
+							  	<% sk2.order_details.each do |sk3| %>
+							  	<% sk3.purchase_price %><% end %>
+							  </td>
+							  <th class="haba">ステータス</th>
+							  <td class="haba"><%= sk2_order.order_ %></td>
+							</tr>
+							<tr>
+								<th width="300">商品タイトル</th>
+								<th class="haba2">個数</th>
+								<th class="haba2">金額</th>
+							</tr>
+							<tr>
+								<td width="300"><%= sk2_item.item_name %></td>
+								<td class="haba2"><%= sk2.purchase_number %></td>
+								<td class="haba2"><%= sk2.purchase_price %></td>
+							</tr>
+							<tr>
+								<th>送付先</th>
+								<td class="haba3"><%= sk2_shipping.shipping_first_name%><%= sk2_shipping.shipping_last_name %>
+								</td>
+								<td class="haba3"><%= sk2_shipping.shipping_address %></td>
+							</tr>
+						<% end %>
+						</table>
+					</div>
+				</div>
