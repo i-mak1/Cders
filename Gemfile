@@ -77,3 +77,4 @@ gem 'ransack'
 gem 'cocoon'
 
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
+gem 'pry-rails'
