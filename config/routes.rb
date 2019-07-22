@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     #ordersコントローラー
     resources :orders, only: [:new, :create]
     get 'orders/payment' => 'orders#payment'
-    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'orders/complete' => 'orders#complete'
 
     #contactsコントローラー

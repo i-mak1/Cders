@@ -24,11 +24,14 @@
 					<tbody>
 					<tr>
 					  <td>
-						<%= attachment_image_tag item, :item_image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+						<%= attachment_image_tag item, :item_image, :fill, 270, 150, format: 'jpeg', fallback: "no_image.jpg" %>
 					  </td>
 					</tr>
 					<tr>
 					  <td><%= link_to item.item_name, item_path(item[:id]) %></td>
+					</tr>
+					<tr>
+					  <td><%= item.artist.artist_name %></td>
 					</tr>
 					<tr>
 					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
