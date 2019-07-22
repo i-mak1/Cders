@@ -25,10 +25,13 @@ Rails.application.routes.draw do
     post 'carts/:id/create' => 'carts#create', as: 'create_cart'
 
     #ordersコントローラー
-    resources :orders, only: [:new, :create]
-    get 'orders/payment' => 'orders#payment'
     get 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
+    patch '/orders/:id/select' => 'orders#select', as: 'select'
+    get 'orders/new/:id' => 'orders#new'
+    get 'orders/new' => 'orders#new'
+    get 'orders/:id/payment' => 'orders#payment', as: 'orders_payment'
     get 'orders/complete' => 'orders#complete'
+    resources :orders, only: [:create, :update]
 
     #contactsコントローラー
     resources :contacts, only: [:new, :create]

@@ -16,9 +16,9 @@
 					<% @cart.each do |cart| %>
 						<tr>
 							<td><%= cart.item.item_name %></td>
-							<td><%= cart.item.price %></td>
+							<td><%= (cart.item.price * BigDecimal("1.08")).round %>円</td>
 							<%= form_for cart do |f| %>
-								<td><%= f.number_field :quantity %></td>
+								<td><%= f.select :quantity, @current_stock_number %>個</td>
 								<td><%= f.submit '数量変更' %></td>
 							<% end %>
 							<td><%= link_to "削除", cart_path(cart.id), method: :delete %></td>
