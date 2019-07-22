@@ -20,10 +20,22 @@
 
 			<div>
 				<h2> 名前</h2>
-				<p><%= @contact.enduser.first_name %><%= @contact.enduser.last_name %></p>
+				<table>
+					<tbody>
+						<tr>
+							<td><%= @enduser.first_name_kana %></td>
+							<td><%= @enduser.last_name_kana %></td>
+						</tr>
+						<tr style="font-size: 25px;">
+							<td><%= @enduser.first_name %></td>
+							<td><%= @enduser.last_name %></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div>
 				<h2> メールアドレス</h2>
+				<p style="font-size: 25px;"><%= @enduser.email %></p>
 			</div>
 			<div>
 				<h2> 問い合わせ内容</h2>
