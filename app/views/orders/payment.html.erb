@@ -17,7 +17,7 @@
 
 <div>
 <h3>支払い方法</h3>
-<%= form_for(@order, :url => {:controller => :orders, :action => :create}) do |f| %>
+<%= form_for(@order, :url => {:controller => :orders, :action => :select}) do |f| %>
 
 	<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>
 	<%= f.submit '最終確認画面へ進む' ,class: "btn btn-default btn-lg"%>
