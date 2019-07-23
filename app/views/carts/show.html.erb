@@ -15,7 +15,6 @@
 											<td><%= f.select :quantity, @current_stock_number %>個</td>
 											<td><%= f.submit '数量変更' %></td>
 										<% end %>
-										<td><%= link_to "編集完了", carts_path %></td>
-										<td><%= link_to "削除", cart_path(@cart), method: :delete %></td>
+										<td><%= link_to "削除", cart_path(@cart),"data-confirm" => "本当に消しますか？", method: :delete %></td>
 								</tbody>
 							</table>

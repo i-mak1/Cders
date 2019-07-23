@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
       get 'endusers/:id/unsubscribe' => 'endusers#unsubscribe'
       get 'endusers/complete' => 'endusers#complete'
-      resources :endusers, only: [:show, :edit, :update]
+      resources :endusers, only: [:show, :edit, :update, :destroy]
     # itemsコントローラー
     resources :items, only: [:index, :show, :create]
 

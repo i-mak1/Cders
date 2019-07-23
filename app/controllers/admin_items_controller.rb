@@ -1,4 +1,5 @@
 class AdminItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @items = Item.page(params[:page]).reverse_order.search(params[:search])
   end
