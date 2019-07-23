@@ -1,12 +1,12 @@
 <!-- ユーザー問合せ画面 -->
-<div style="margin: 0 auto; text-align: center;">
-<h1>お問い合わせ</h1>
-</div>
+<div style="background-image:url(<%= asset_path "test4.jpg" %>)" class="back">
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 col-md-offset-3" style="background-color:rgba(255,255,255,0.5); color: black;">
 			<%= form_for(@contact, :url => {:controller => :contacts, :action => :create}) do |f| %>
-
+			<div style="text-align: center;">
+			<h1>お問い合わせ</h1>
+			</div>
 			<% if @contact.errors.any? %>
 				<div id="error_explanation" style="color: red;">
 					<h3> <%= @contact.errors.count %>件のエラーが発生しました。</h3>
@@ -17,7 +17,6 @@
 					</ul>
 				</div>
 				<% end %>
-
 			<div>
 				<h2> 名前</h2>
 				<table>
@@ -39,12 +38,13 @@
 			</div>
 			<div>
 				<h2> 問い合わせ内容</h2>
-				<%= f.text_area :contact, size: "20*10", class: "form-control" %>
+				<%= f.text_area :contact, size: "20*10", class: "form-control", placeholder: "お問い合わせ内容" %>
+			</div>
+			<div style="margin-top: 10px; margin-bottom: 10px; text-align: center;">
+				<%= f.submit '送信', class: "form-control btn btn-success" %>
 			</div>
 		</div>
 	</div>
 </div>
-<div style="margin: 0 auto; text-align: center;">
-<%= f.submit '送信' %>
 </div>
 <% end %>

@@ -32,6 +32,9 @@
 					</tr>
 					<tr>
 					  <td><%= item.artist.artist_name %></td>
+					 </tr>
+					<tr>
+					  <td>在庫数:<%= item.stock_number %>枚</td>
 					</tr>
 					<tr>
 					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
@@ -52,28 +55,26 @@
 </div>
 		</div>
 <!-- ランキング -->
-
 		<div class="col-lg-3">
 			<h2 id="title">RANKING</h2>
 			<div id="subtitle">人気Top 5</div>
 			<div id="backbox">
-<!-- 一項目 -->
-
+			<% @item_rank.each do |rank| %>
 				<div id="rankbox">
 					<tr>
 					  <td>
 						1
 					  </td>
-					  <td><img src=assets/test1.jpg height="100" width="150"></td>
+					  <td><%= attachment_image_tag rank, :item_image, :fill, 100, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
 					</tr>
 					<div>
-					  <%= link_to "商品名", "items" %>
+					  <%= link_to rank.item_name, item_path(item[:id]) %>
 					</div>
 					<div>
-					   1000円
+					   <%= (rank.price * BigDecimal("1.08")).round %>円
 					</div>
 				</div>
-<!-- 一区切り -->
+			<% end %>
 		</div>
 	</div>
 </div>

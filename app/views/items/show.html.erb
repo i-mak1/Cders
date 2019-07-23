@@ -29,6 +29,8 @@
 						</div>
 				<% end %>
 		</div>
+		<% if @item.stock_number > 0 %>
+		<% if @user = current_enduser %>
 		<div class="col-lg-3">
 			<%= form_for(@cart, :url => {:controller => :carts, :action => :create}) do |f| %>
                  <%= f.hidden_field :item_id, :value => @item.id %>
@@ -36,6 +38,8 @@
                <%= f.submit "カートに追加", class: "btn btn-danger" %>
             <% end %>
 		</div>
+		<% end %>
+		<% end %>
 	</div>
 </div>
 
