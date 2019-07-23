@@ -9,7 +9,6 @@
 						<th>単価</th>
 						<th>数量</th>
 						<th></th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -17,11 +16,8 @@
 						<tr>
 							<td><%= cart.item.item_name %></td>
 							<td><%= (cart.item.price * BigDecimal("1.08")).round %>円</td>
-							<%= form_for cart do |f| %>
-								<td><%= f.select :quantity, @current_stock_number %>個</td>
-								<td><%= f.submit '数量変更' %></td>
-							<% end %>
-							<td><%= link_to "削除", cart_path(cart.id), method: :delete %></td>
+							<td><%= cart.quantity %>
+							<td><%= link_to "編集", cart_path(cart.id) %></td>
 						</tr>
 					<% end %>
 				</tbody>

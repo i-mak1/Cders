@@ -1,18 +1,21 @@
 class CartsController < ApplicationController
+
+  def index
+    @carts = current_enduser.carts
+  end
+
   def show
-  	@cart = current_enduser.carts
-    @item = Item.find(params[:id])
+    @cart = Cart.find(params[:id])
     @current_stock_number = []
-    @item.stock_number.times do |quantity|
+    @cart.item.stock_number.times do |quantity|
       if quantity < 100
         @current_stock_number << quantity + 1
       else
         break
       end
     end
-  def index
-  	@carts = current_enduser.carts
   end
+
 
   def update
    @cart = Cart.find(params[:id])

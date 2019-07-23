@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :create]
 
     # cartsコントローラー
-    resources :carts, only: [:index, :update, :destroy]
+    resources :carts, only: [:index, :update, :destroy, :show]
     post 'carts/:id/create' => 'carts#create', as: 'create_cart'
 
     #ordersコントローラー
