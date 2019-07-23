@@ -25,11 +25,9 @@ class Endusers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-   def destroy
-     resource.destroy
-     resource.update(email: resource.deleted_at.to_i.to_s + '_' + resource.email.to_s)
-     redirect_to endusers_complete_path
-   end
+  # def destroy
+  #   super
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

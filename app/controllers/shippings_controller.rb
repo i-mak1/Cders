@@ -1,4 +1,5 @@
 class ShippingsController < ApplicationController
+  before_action :authenticate_enduser!
   def new
   	 @shipping = Shipping.new
   end
