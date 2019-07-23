@@ -8,16 +8,18 @@
 						<th>メールアドレス</th>
 						<th>show</th>
 					</tr>
-						<% @endusers.each do |enduser| %>
+					<% @endusers.each do |enduser| %>
 					<tr>
 						<td width="200"><%= enduser.first_name + enduser.last_name %></td>
 						<td width="400"><%= enduser.email %></td>
-						<td width="200"><%= link_to enduser_path(enduser.id) do %>
-					  	<div class="btn btn-default">詳細</div></td>
-					<% end %>
+						<td width="200">
+							<%= link_to enduser_path(enduser.id) do %>
+					  			<div class="btn btn-default">詳細</div>
+					  		<% end %>
+					  	</td>
 					</tr>
+					<% end %>
 				</table>
-				<% end %>
 		</div>
 	</div>
 </div>

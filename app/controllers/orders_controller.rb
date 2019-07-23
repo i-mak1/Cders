@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_enduser!
   def new
     @shippings = current_enduser.shippings
   end
