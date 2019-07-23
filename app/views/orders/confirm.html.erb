@@ -21,33 +21,34 @@
 			<h2>送付先</h2>
 			<table border>
 				<tr>
-					<td width="200"> セイ:<%= @shipping.shipping.shipping_first_name_kana %></td>
-					<td width="200"> メイ:<%= @shipping.shipping.shipping_last_name_kana %></td>
+					<td width="200"> セイ:<%= @order.shipping.shipping_first_name_kana %></td>
+					<td width="200"> メイ:<%= @order.shipping.shipping_last_name_kana %></td>
 				</tr>
 				<tr>
-					<td width="200"> 姓:<%= @shipping.shipping.shipping_first_name %></td>
-					<td width="200"> 名:<%= @shipping.shipping.shipping_last_name %></td>
+					<td width="200"> 姓:<%= @order.shipping.shipping_first_name %></td>
+					<td width="200"> 名:<%= @order.shipping.shipping_last_name %></td>
 				</tr>
 				<tr>
-					<td width="200"> 郵便番号:<%= @shipping.shipping.shipping_postcode %></td>
+					<td width="200"> 郵便番号:<%= @order.shipping.shipping_postcode %></td>
 				</tr>
 				<tr>
-					<td width="200">住所 :<%= @shipping.shipping.shipping_address %><br><br></td>
+					<td width="200">住所 :<%= @order.shipping.shipping_address %><br><br></td>
 				</tr>
 			</table>
 		</div>
 		<div class="col-lg-2" style="margin-top: 130px;">
-			<%= link_to "変更", new_order_path, class: "btn btn-default" %>
+			<%= link_to "変更", orders_new_path, class: "btn btn-default" %>
 		</div>
 		<div class="col-lg-5" style="border: solid;">
 			<h2> 注文内容</h2><br>
-			<p style="font-size: 30px;">商品の小計：　●● 円</p><br>
+		<% sum = 0 %>
+			<% @carts.each do |cart| %>
+				<% sum = sum + (cart.item.price * BigDecimal("1.08")).round * cart.quantity %>
+			<% end %>
+					<p style="font-size: 30px;">商品の小計：<%= sum %> 円</p><br>
 			<p style="font-size: 30px;">送料     :  500 円</p><br><br>
-			<p style="font-size: 30px;">合計     :  ●● 円</p>
+			<p style="font-size: 30px;">合計     :  <%= sum + 500 %> 円</p>
 			<%= link_to "注文を確定する", orders_complete_path, class: "btn btn-default" %>
-
-
-
 		</div>
 	</div>
 
@@ -60,7 +61,7 @@
 	<div  style="margin-bottom: 50px;">
 		<div class="col-lg-5">
 			<h2>支払方法</h2>
-			<p>銀行振込</p>
+			<p><%= @order.payment %></p>
 		</div>
 		<div class="col-lg-2" style="margin-top: 55px;">
 			<%= link_to "変更", orders_payment_path, class: "btn btn-default" %>
@@ -81,16 +82,20 @@
 				<thead>
 					<tr>
 						<th>品名</th>
+						<th>値段</th>
 						<th>数量</th>
 						<th>小計</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>eachdo品名</td>
-						<td>eachdo数量</td>
-						<td>eachdo小計</td>
-					</tr>
+					<% @carts.each do |cart| %>
+						<tr>
+							<td><%= cart.item.item_name %></td>
+							<td><%= (cart.item.price * BigDecimal("1.08")).round %>円</td>
+							<td><%= cart.quantity %>枚</td>
+							<td><%= (cart.item.price * BigDecimal("1.08")).round * cart.quantity %>円</td>
+						</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>

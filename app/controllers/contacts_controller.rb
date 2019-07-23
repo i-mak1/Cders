@@ -1,21 +1,25 @@
 class ContactsController < ApplicationController
   def new
   	@contact = Contact.new
+    @enduser = current_enduser
   end
 
   def create
+    @enduser = current_enduser
   	@contact = Contact.new(contact_params)
-  	　if @contact.save
-  	     flash[:notice] = "お問い合わせを承りました。"
-  	     redirect_to items_path
+    @contact.enduser_id = current_enduser.id
+      if @contact.save
+  	    flash[:notice] = "お問い合わせを承りました。"
+  	    redirect_to items_path
       else
-         render :new
+        render :new
       end
   end
 
 private
 
   def contact_params
-  	params.require(:contact).permit(:contact, endusers_attributes: [:email, :first_name, :last_name])
+  	params.require(:contact).permit(:contact)
   end
+end
 
