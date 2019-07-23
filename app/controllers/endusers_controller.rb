@@ -1,18 +1,17 @@
 class EndusersController < ApplicationController
   def show
-    @enduser = Enduser.find(current_enduser.id)
-    @shipping = Shipping.where(enduser_id:current_enduser.id)
-    @order = Order.where(enduser_id:current_enduser.id)
+    @enduser = Enduser.find(params[:id])
+    @shipping = @enduser.shippings
+    @order = @enduser.orders
   end
 
   def edit
-    @enduser = Enduser.find(current_enduser.id)
+    @enduser = Enduser.find(params[:id])
   end
 
   def update
     @enduser = Enduser.find(params[:id])
-    @enduser.update(user_params)
-    redirect_to enduser_path(@enduser)
+    @enduser.update(enduser_params)
   end
 
   def unsubscribe
@@ -23,7 +22,7 @@ class EndusersController < ApplicationController
 
 private
 
-  def user_params
+  def enduser_params
     params.require(:enduser).permit(:email, :first_name, :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :tel)
   end
 end
