@@ -17,6 +17,10 @@ belongs_to :genre
 
 belongs_to :label
 
+validates :price, presence: true, numericality: true
+validates :stock_number, presence: true
+validates :item_name, presence: true
+
 	def self.search(search)
 		if search
 			where(['item_name LIKE ?', "%#{search}%"])

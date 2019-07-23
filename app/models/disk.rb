@@ -4,4 +4,7 @@ belongs_to :item
 has_many :songs, dependent: :destroy, inverse_of: :disk
 
 accepts_nested_attributes_for :songs, allow_destroy: true
+
+validates :disk_name, presence: true
+
 end

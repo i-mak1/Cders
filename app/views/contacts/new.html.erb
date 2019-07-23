@@ -6,11 +6,36 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<%= form_for(@contact, :url => {:controller => :contacts, :action => :create}) do |f| %>
+
+			<% if @contact.errors.any? %>
+				<div id="error_explanation" style="color: red;">
+					<h3> <%= @contact.errors.count %>件のエラーが発生しました。</h3>
+					<ul>
+					<% @contact.errors.full_messages.each do |message| %>
+					<li> <%= message %> </li>
+				<% end %>
+					</ul>
+				</div>
+				<% end %>
+
 			<div>
 				<h2> 名前</h2>
+				<table>
+					<tbody>
+						<tr>
+							<td><%= @enduser.first_name_kana %></td>
+							<td><%= @enduser.last_name_kana %></td>
+						</tr>
+						<tr style="font-size: 25px;">
+							<td><%= @enduser.first_name %></td>
+							<td><%= @enduser.last_name %></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div>
 				<h2> メールアドレス</h2>
+				<p style="font-size: 25px;"><%= @enduser.email %></p>
 			</div>
 			<div>
 				<h2> 問い合わせ内容</h2>

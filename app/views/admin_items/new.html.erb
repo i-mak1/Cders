@@ -6,6 +6,17 @@
 			<h2> 商品新規追加</h2>
 			<%= form_for(@item, :url => {:controller => :admin_items, :action => :create}) do |f| %>
 
+				<% if @item.errors.any? %>
+				<div id="error_explanation" style="color: red;">
+					<h3> <%= @item.errors.count %>件のエラーが発生しました。</h3>
+					<ul>
+					<% @item.errors.full_messages.each do |message| %>
+					<li> <%= message %> </li>
+				<% end %>
+					</ul>
+				</div>
+				<% end %>
+
 			<div>
 				<h3>CDタイトル</h3>
 				<%= f.text_field :item_name %>

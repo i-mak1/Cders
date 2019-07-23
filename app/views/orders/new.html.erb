@@ -33,7 +33,15 @@
 										</tr>
 										<tr>
 											<td style="float: right; padding-bottom: 5px; padding-right: 5px;">
-											</style><%= link_to 'この住所を使う', orders_payment_path, class: "btn btn-default" %></td>
+											</style>
+											<% if @order.shipping_id.nil? %>
+												<%= link_to 'この住所を使う', orders_path(order: {shipping_id: shipping.id}), method: :post, class: "btn btn-default" %>
+											<% else %>
+												<%= link_to 'この住所を使う', order_path(@order), method: :put, class: "btn btn-default" %>
+											<% end %>
+
+
+										</td>
 										</tr>
 								</tbody>
 							</table>
