@@ -1,4 +1,5 @@
 <!-- 商品詳細ページ(ユーザー側) -->
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
@@ -35,6 +36,9 @@
                <%= f.select :quantity, @current_stock_number %>個
                <%= f.submit "カートに追加", class: "btn btn-danger" %>
             <% end %>
+            <% if flash[:notice] %>
+		  		<p><%= flash[:notice] %></p>
+			<% end %>
 		</div>
 	</div>
 </div>
