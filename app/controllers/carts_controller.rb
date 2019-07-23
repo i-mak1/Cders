@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_enduser!
 
   before_action :check_id, only:[:create]
 

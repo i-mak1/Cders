@@ -21,18 +21,14 @@
 						<li>
 							<%= @enduser.tel %>
 						</li>
-						<li>
-							<%= @enduser.reset_password_token %>
-						</li>
-						<li>
-							<%= link_to "編集", edit_enduser_path, class: 'btn btn-default' %>
-						</li>
+							<%= link_to "編集", edit_admin_enduser_path, class: 'btn btn-default' %>
+							<%= link_to "削除", admin_enduser_path(@enduser.id),method: :delete, class: 'btn btn-default' ,"data-confirm" => "本当に削除しますか？" %>
 					</ul>
 				</div>
 					<div class="col-md-6">
 						<h2>購入履歴</h2>
 						<table>
-						<% @order.each do |sk2| %>
+						<% @orders.each do |sk2| %>
 							<tr>
 							  <th class="haba">購入日</th>
 							  <td class="haba"><%= sk2.created_at %></td>
@@ -42,7 +38,7 @@
 							  	<% sk3.purchase_price %><% end %>
 							  </td>
 							  <th class="haba">ステータス</th>
-							  <td class="haba"><%= sk2_order.order_ %></td>
+							  <td class="haba"><%= sk2_order.order_status %></td>
 							</tr>
 							<tr>
 								<th width="300">商品タイトル</th>
@@ -50,15 +46,15 @@
 								<th class="haba2">金額</th>
 							</tr>
 							<tr>
-								<td width="300"><%= sk2_item.item_name %></td>
+								<td width="300"><%= sk2.item.item_name %></td>
 								<td class="haba2"><%= sk2.purchase_number %></td>
 								<td class="haba2"><%= sk2.purchase_price %></td>
 							</tr>
 							<tr>
 								<th>送付先</th>
-								<td class="haba3"><%= sk2_shipping.shipping_first_name%><%= sk2_shipping.shipping_last_name %>
+								<td class="haba3"><%= sk2_shippings.shipping_first_name%><%= sk2_shippings.shipping_last_name %>
 								</td>
-								<td class="haba3"><%= sk2_shipping.shipping_address %></td>
+								<td class="haba3"><%= sk2_shippings.shipping_address %></td>
 							</tr>
 						<% end %>
 						</table>

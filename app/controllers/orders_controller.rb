@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   before_action :check_carts, only:[:new, :create]
+  before_action :authenticate_enduser!
 
   def check_carts
     unless current_enduser.carts.exists?
