@@ -1,14 +1,19 @@
 class OrdersController < ApplicationController
+
+  before_action :check_carts, only:[:new, :create]
   before_action :authenticate_enduser!
+
+  def check_carts
+    unless current_enduser.carts.exists?
+      flash[:notice] = "カート内が空です"
+      redirect_to items_path
+    end
+  end
+
   def new
     @shippings = current_enduser.shippings
-    if params[:id].nil?
-      p "nil"
-      @order = Order.new
-    else
-      p "not nil"
-      @order = Order.find(params[:id])
-    end
+    @order = Order.new
+    @carts = current_enduser.carts
   end
 
   def payment
@@ -18,20 +23,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
-    @order.save!
-    redirect_to orders_payment_path(@order.id)
-  end
-
-  def update
-    @order = Order.find(params[:id])
-    @order.update!(order_params)
-    redirect_to orders_payment_path(@order)
-  end
-
-  def select
-    @order = Order.find(params[:id])
-    @order.update!(order_params)
-    redirect_to orders_confirm_path(@order)
+    if @order.save!
+      current_enduser.carts.destroy_all
+      redirect_to orders_complete_path
+    end
   end
 
   def confirm
