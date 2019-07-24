@@ -34,8 +34,8 @@
 							  <th class="haba">購入日</th>
 							  <td class="haba"><%= sk2.created_at %></td>
 							  <th class="haba">金額</th>
-							  <% sk2.order_details.each do |sk3| %>
 							  <td>
+							  	<% sk2.order_details.each do |sk3| %>
 							  	<% sk3.purchase_price %>
 							  </td>
 							  <th class="haba">ステータス</th>

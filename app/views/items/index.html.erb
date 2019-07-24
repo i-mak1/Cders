@@ -68,7 +68,7 @@
 					  <td><%= attachment_image_tag rank, :item_image, :fill, 100, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
 					</tr>
 					<div>
-					  <%= link_to rank.item_name, item_path(rank[:id]) %>
+					  <%= link_to rank.item_name, item_path(rank) %>
 					</div>
 					<div>
 					   <%= (rank.price * BigDecimal("1.08")).round %>円
