@@ -1,4 +1,5 @@
 class EndusersController < ApplicationController
+  before_action :authenticate_enduser!, only: [:show, :edit, :update, :unsubscribe]
   def show
     @enduser = Enduser.find(params[:id])
     @shipping = @enduser.shippings
@@ -13,6 +14,13 @@ class EndusersController < ApplicationController
     @enduser = Enduser.find(params[:id])
     @enduser.update(enduser_params)
   end
+
+  def destroy
+    @enduser = Enduser.find(params[:id])
+    @enduser.destroy
+    @enduser.update(email: @enduser.deleted_at.to_i.to_s + '_' + @enduser.email.to_s)
+    redirect_to endusers_complete_path
+   end
 
   def unsubscribe
   end

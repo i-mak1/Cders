@@ -18,12 +18,4 @@ class Enduser < ApplicationRecord
   validates :address, presence: true
   validates :tel, presence: true
 
-  def active_for_authentication?
-    super && !self.is_deleted?
-  end
-
-  def inactive_message
-    !self.is_deleted? ? super : :special_condition_is_not_valid
-  end
-
 end

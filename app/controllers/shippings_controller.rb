@@ -1,4 +1,5 @@
 class ShippingsController < ApplicationController
+  before_action :authenticate_enduser!
   def new
   	 @shipping = Shipping.new
   end
@@ -7,7 +8,7 @@ class ShippingsController < ApplicationController
   	 @shipping = Shipping.new(shipping_params)
      @shipping.enduser_id = current_enduser.id
      @shipping.save!
-     redirect_to new_order_path
+     redirect_to orders_new_path
   end
 
    private

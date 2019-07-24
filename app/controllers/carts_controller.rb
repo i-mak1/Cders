@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+  before_action :authenticate_enduser!
+
+  before_action :check_id, only:[:create]
 
   def index
     @carts = current_enduser.carts
@@ -27,6 +30,17 @@ class CartsController < ApplicationController
    @cart = Cart.find(params[:id])
    @cart.destroy
    redirect_to carts_path
+  end
+
+  def check_id
+    carts = current_enduser.carts
+    carts.each do |cart|
+      if cart.item.id == params[:id].to_i
+        flash[:notice] = "既に同じ商品がカートに追加されています。
+                          カートから数量を変更して下さい。"
+        redirect_to item_path
+      end
+    end
   end
 
   def create
