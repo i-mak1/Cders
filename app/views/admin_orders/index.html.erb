@@ -1,2 +1,28 @@
-<h1>AdminOrders#index</h1>
-<p>Find me in app/views/admin_orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<% if flash[:notice] %>
+		  <p><%= flash[:notice] %></p>
+			<% end %>
+			<h1>受注一覧</h1>
+			<table class="table table-borderd">
+				<thead>
+					<tr>
+						<th width="120px">ユーザー名</th>
+						<th>購入日時</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.enduser.first_name %><%= order.enduser.last_name %></td>
+							<td style="width: 250px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; "><%= order.created_at %></td>
+							<td style="width: 100px; text-align: center;"><%= link_to "詳細画面", admin_order_path(order.id) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

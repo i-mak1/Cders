@@ -23,7 +23,17 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
-    if @order.save!
+    if @order.save
+      @carts = current_enduser.carts
+      @carts.each do |cart|
+        @order_detail = cart.item.order_details.build
+        @order_detail.purchase_number = cart.quantity
+        @order_detail.purchase_price = (cart.item.price * BigDecimal("1.08")).round * cart.quantity
+        cart.item.stock_number -= cart.quantity
+        @order_detail.order = @order
+        @order_detail.save
+        cart.item.save
+      end
       current_enduser.carts.destroy_all
       redirect_to orders_complete_path
     end
