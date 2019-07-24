@@ -1,14 +1,14 @@
 class Contact < ApplicationRecord
 
 belongs_to :enduser
-# コンタクトに紐づくエンドユーザーが存在しない時（管理者による問い合わせ）バリデーションを実行する。
-validates :contact, presence: true, unless: :is_admin?
-validates :reply, presence: true, if: :is_admin?
+# replyが空かどうかでバリデーションをかける、空ならユーザー、違えば管理者。
+validates :contact, presence: true, if: :is_enduser?
+validates :reply, presence: true, unless: :is_enduser?
 
 private
-# 管理者か否かを判断するメソッド。コンタクトに紐づくエンドユーザーが存在しない場合は管理者と判断する。
-def is_admin?
-	self.enduser.nil?
+# ユーザーか否かを判断するメソッド。replyが空の場合はユーザーと判断し、contactにのみバリデーションが働く。
+def is_enduser?
+	self.reply.nil?
 end
 
 end
