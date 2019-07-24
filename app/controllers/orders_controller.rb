@@ -3,10 +3,8 @@ class OrdersController < ApplicationController
   def new
     @shippings = current_enduser.shippings
     if params[:id].nil?
-      p "nil"
       @order = Order.new
     else
-      p "not nil"
       @order = Order.find(params[:id])
     end
   end
