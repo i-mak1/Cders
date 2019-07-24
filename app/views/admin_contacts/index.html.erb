@@ -15,11 +15,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @contact.each do |c| %>
+					<% @contact.each do |contact| %>
 						<tr>
-							<td><%= c.enduser.first_name %><%= c.enduser.last_name %></td>
-							<td style="width: 250px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; "><%= c.contact %></td>
-							<td style="width: 100px; text-align: center;"><%= link_to "詳細画面", admin_contact_path(c.id) %></td>
+							<td><%= contact.enduser.first_name %><%= contact.enduser.last_name %></td>
+							<td style="width: 250px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; "><%= contact.contact %></td>
+							<td style="width: 100px; text-align: center;"><%= link_to "詳細画面", admin_contact_path(contact.id) %></td>
 						</tr>
 					<% end %>
 				</tbody>
