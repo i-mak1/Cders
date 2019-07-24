@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+acts_as_paranoid
 
 belongs_to :enduser
 belongs_to :shipping

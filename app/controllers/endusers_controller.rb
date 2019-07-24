@@ -3,7 +3,7 @@ class EndusersController < ApplicationController
   def show
     @enduser = Enduser.find(params[:id])
     @shipping = @enduser.shippings
-    @order = @enduser.orders.where(confirm: true)
+    @order = @enduser.orders
   end
 
   def edit
