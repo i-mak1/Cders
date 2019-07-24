@@ -27,7 +27,6 @@ Rails.application.routes.draw do
     #ordersコントローラー
     get 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
     patch '/orders/:id/select' => 'orders#select', as: 'select'
-    post '/orders/:id/purchase' => 'orders#purchase', as: 'purchase'
     get 'orders/new/:id' => 'orders#new'
     get 'orders/new' => 'orders#new'
     get 'orders/:id/payment' => 'orders#payment', as: 'orders_payment'
