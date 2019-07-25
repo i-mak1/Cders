@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post 'carts/:id/create' => 'carts#create', as: 'create_cart'
 
     #ordersコントローラー
-    get 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
+    post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'orders/new' => 'orders#new'
     get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:create]
