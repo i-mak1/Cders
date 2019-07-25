@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   before_action :check_carts, only:[:new, :create]
+  before_action :check_shippings, only:[:confirm]
   before_action :authenticate_enduser!
 
   def check_carts
@@ -46,10 +47,5 @@ class OrdersController < ApplicationController
   def complete
   end
 
-  private
-  def order_params
-    params.require(:order).permit(:payment,:enduser_id,:shipping_id,:confirm)
-
-  end
 
 end
