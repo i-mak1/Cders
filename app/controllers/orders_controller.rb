@@ -16,10 +16,6 @@ class OrdersController < ApplicationController
     @carts = current_enduser.carts
   end
 
-  def payment
-     @order = Order.find(params[:id])
-  end
-
   def create
     @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
@@ -43,24 +39,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @carts = current_enduser.carts
   end
-
-  def purchase
-    @order = Order.find(params[:id])
-    @carts = current_enduser.carts
-    @carts.each do |cart|
-      @order_detail = cart.item.order_details.build
-      @order_detail.purchase_number = cart.quantity
-      @order_detail.purchase_price = (cart.item.price * BigDecimal("1.08")).round * cart.quantity
-      cart.item.stock_number -= cart.quantity
-      @order_detail.order = @order
-      @order_detail.save
-      cart.item.save
-    end
-    @order.update(confirm: true)
-    @carts.destroy_all
-    redirect_to orders_complete_path
-  end
-
 
   def complete
   end
