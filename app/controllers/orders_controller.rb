@@ -16,13 +16,11 @@ class OrdersController < ApplicationController
     @carts = current_enduser.carts
   end
 
-  def payment
-     @order = Order.find(params[:id])
-  end
-
   def create
     @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
+    @shippings = current_enduser.shippings
+    @carts = current_enduser.carts
     if @order.save
       @carts = current_enduser.carts
       @carts.each do |cart|
@@ -36,6 +34,7 @@ class OrdersController < ApplicationController
       end
       current_enduser.carts.destroy_all
       redirect_to orders_complete_path
+    else render :new
     end
   end
 
@@ -43,7 +42,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @carts = current_enduser.carts
   end
-
 
   def complete
   end

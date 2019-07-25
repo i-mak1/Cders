@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-      get 'shippings/new'
-      get 'admin_labels/new'
-      get 'admin_artists/new'
       devise_for :admins, path: 'admins', controllers: {
       	sessions: 'admins/sessions',
       	passwords: 'admins/passwords'
@@ -17,6 +14,7 @@ Rails.application.routes.draw do
       get 'endusers/:id/unsubscribe' => 'endusers#unsubscribe'
       get 'endusers/complete' => 'endusers#complete'
       resources :endusers, only: [:show, :edit, :update, :destroy]
+
     # itemsコントローラー
     resources :items, only: [:index, :show, :create]
 
@@ -26,12 +24,9 @@ Rails.application.routes.draw do
 
     #ordersコントローラー
     get 'orders/:id/confirm' => 'orders#confirm', as: 'orders_confirm'
-    patch '/orders/:id/select' => 'orders#select', as: 'select'
-    get 'orders/new/:id' => 'orders#new'
     get 'orders/new' => 'orders#new'
-    get 'orders/:id/payment' => 'orders#payment', as: 'orders_payment'
     get 'orders/complete' => 'orders#complete'
-    resources :orders, only: [:create, :update]
+    resources :orders, only: [:create]
 
     #contactsコントローラー
     resources :contacts, only: [:new, :create]

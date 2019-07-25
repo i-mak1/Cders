@@ -1,15 +1,17 @@
 <!-- ユーザー側商品一覧 -->
 <% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+  <p style="text-align: center; font-size: 20px;"><%= flash[:notice] %></p>
 <% end %>
 <!-- スライドショー部分 -->
 <div id="container">
         <div id="theTarget">
-            <div style="background-image: url(assets/test1.jpg)"></div>
-            <div style="background-image: url(assets/test2.jpg)"></div>
-            <div style="background-image: url(assets/test3.jpg)"></div>
-            <div style="background-image: url(assets/test4.jpg)"></div>
-            <div style="background-image: url(assets/test5.jpg)"></div>
+        	<% @item_rank.each do |rank| %>
+			<div>
+			<%= link_to item_path(rank) do %>
+			<%= attachment_image_tag rank, :item_image, :fill, 700, 400, format: 'jpeg', fallback: "no_image.jpg" %>
+			<% end %>
+			</div>
+			<% end %>
         </div>
 </div>
 <!-- 商品一覧ページ -->
@@ -24,7 +26,9 @@
 					<tbody>
 					<tr>
 					  <td>
+					  	<%= link_to item_path(item[:id]) do %>
 						<%= attachment_image_tag item, :item_image, :fill, 270, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+						<% end %>
 					  </td>
 					</tr>
 					<tr>
@@ -58,15 +62,17 @@
 		<div class="col-lg-3">
 			<h2 id="title">RANKING</h2>
 			<div id="subtitle">人気Top 5</div>
-			<div id="backbox">
-			<% @item_rank.each do |rank| %>
+			<div style="border: solid 1px; margin-bottom: 10px;">
+			<% @item_rank.each.with_index(1) do |rank,i| %>
 				<div id="rankbox">
-					<tr>
-					  <td>
-						1
-					  </td>
-					  <td><%= attachment_image_tag rank, :item_image, :fill, 100, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
-					</tr>
+					<div>
+						<%= "No.#{i}" %>
+					</div>
+					<div>
+					  <%= link_to item_path(rank) do %>
+					  <%= attachment_image_tag rank, :item_image, :fill, 200, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+					  <% end %>
+					</div>
 					<div>
 					  <%= link_to rank.item_name, item_path(rank) %>
 					</div>
