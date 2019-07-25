@@ -24,7 +24,9 @@
 					<tbody>
 					<tr>
 					  <td>
+					  	<%= link_to item_path(item[:id]) do %>
 						<%= attachment_image_tag item, :item_image, :fill, 270, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+						<% end %>
 					  </td>
 					</tr>
 					<tr>
@@ -58,17 +60,19 @@
 		<div class="col-lg-3">
 			<h2 id="title">RANKING</h2>
 			<div id="subtitle">人気Top 5</div>
-			<div id="backbox">
-			<% @item_rank.each do |rank| %>
+			<div style="border: solid 1px; margin-bottom: 10px;">
+			<% @item_rank.each.with_index(1) do |rank,i| %>
 				<div id="rankbox">
-					<tr>
-					  <td>
-						1
-					  </td>
-					  <td><%= attachment_image_tag rank, :item_image, :fill, 100, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
-					</tr>
 					<div>
-					  <%= link_to rank.item_name, item_path(item[:id]) %>
+						<%= "No.#{i}" %>
+					</div>
+					<div>
+					  <%= link_to item_path(rank) do %>
+					  <%= attachment_image_tag rank, :item_image, :fill, 200, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+					  <% end %>
+					</div>
+					<div>
+					  <%= link_to rank.item_name, item_path(rank)  %>
 					</div>
 					<div>
 					   <%= (rank.price * BigDecimal("1.08")).round %>円
