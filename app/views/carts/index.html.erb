@@ -5,6 +5,7 @@
 			<table class="table table-borderd">
 				<thead>
 					<tr>
+						<th></th>
 						<th>品名1</th>
 						<th>単価</th>
 						<th>数量</th>
@@ -14,6 +15,7 @@
 				<tbody>
 					<% @carts.each do |cart| %>
 						<tr>
+							<td><%= attachment_image_tag cart.item, :item_image, fallback:"no_image.jpg", size: "50x50" %>
 							<td><%= cart.item.item_name %></td>
 							<td><%= (cart.item.price * BigDecimal("1.08")).round %>円</td>
 							<td><%= cart.quantity %>
