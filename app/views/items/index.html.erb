@@ -1,6 +1,6 @@
 <!-- ユーザー側商品一覧 -->
 <% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+  <p style="text-align: center; font-size: 20px;"><%= flash[:notice] %></p>
 <% end %>
 <!-- スライドショー部分 -->
 <div id="container">
@@ -41,7 +41,7 @@
 					  <td>在庫数:<%= item.stock_number %>枚</td>
 					</tr>
 					<tr>
-					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
+					  <td><%= (item.price * BigDecimal("1.08")).round %>円(税込)</td>
 					</tr>
 					<% if item.stock_number == 0 %>
 					<tr>
@@ -65,7 +65,7 @@
 			<div style="border: solid 1px; margin-bottom: 10px;">
 			<% @item_rank.each.with_index(1) do |rank,i| %>
 				<div id="rankbox">
-					<div>
+					<div style="font-size: 20px;">
 						<%= "No.#{i}" %>
 					</div>
 					<div>
@@ -77,7 +77,7 @@
 					  <%= link_to rank.item_name, item_path(rank) %>
 					</div>
 					<div>
-					   <%= (rank.price * BigDecimal("1.08")).round %>円
+					   <%= (rank.price * BigDecimal("1.08")).round %>円(税込)
 					</div>
 				</div>
 			<% end %>

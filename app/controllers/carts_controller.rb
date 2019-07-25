@@ -10,7 +10,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     @current_stock_number = []
     @cart.item.stock_number.times do |quantity|
-      if quantity < 100
+      if quantity < 20
         @current_stock_number << quantity + 1
       else
         break

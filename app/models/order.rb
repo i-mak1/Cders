@@ -2,7 +2,7 @@ class Order < ApplicationRecord
 acts_as_paranoid
 
 belongs_to :enduser
-belongs_to :shipping
+belongs_to :shipping, optional: true
 has_many :order_details, dependent: :destroy
 
 enum order_status: { 受付: 1, 商品準備中: 2, 出荷済: 3 }

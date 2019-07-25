@@ -3,6 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9">
+<<<<<<< HEAD
 			<div class="col-lg-6">
 				<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
 			</div>
@@ -10,7 +11,7 @@
 				<div>
 					<div id="item-info"><%= @item.item_name %></div>
 					<div id="item-info"><%= @item.artist.artist_name %></div>
-					<div id="item-info">（税込）<%= (@item.price * BigDecimal("1.08")).round %>円</div>
+					<div id="item-info"><%= (@item.price * BigDecimal("1.08")).round %>円(税込)</div>
 					<% if @item.stock_number == 0 %>
 						<div id="item-info" style="color: red;">
 							<strong>売り切れ</strong>

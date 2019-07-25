@@ -10,7 +10,7 @@
 	</thead>
 	<tbody>
 		<td><%= @cart.item.item_name %></td>
-		<td><%= (@cart.item.price * BigDecimal("1.08")).round %>円</td>
+		<td><%= (@cart.item.price * BigDecimal("1.08")).round %>円(税込)</td>
 		<%= form_for @cart do |f| %>
 			<td><%= f.select :quantity, @current_stock_number %>個</td>
 			<td><%= f.submit '数量変更' %></td>
