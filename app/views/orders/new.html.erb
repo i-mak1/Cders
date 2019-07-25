@@ -8,12 +8,14 @@
 					<h3>支払い方法</h3>
 					<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>
 			<h2 style="margin-bottom: 30px;"><span>お届け先住所の選択</span></h2>
+
 			<% if @order.errors.any? %>
  				 <div id="error_explanation">
    				 <h4 style="color: red;">送付先を選択してください</h2>
 
  				 </div>
 			<% end %>
+
 			<h3 style="margin-bottom: 30px;"> 登録住所</h3>
 				<% @shippings.each do |shipping| %>
 					<div style=" font-size: 15px; margin-bottom: 15px; border: solid 1px; width:450px;">
