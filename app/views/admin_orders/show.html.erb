@@ -1,2 +1,33 @@
-<h1>AdminOrders#show</h1>
-<p>Find me in app/views/admin_orders/show.html.erb</p>
+<div class="col-md-6">
+						<h2>購入履歴</h2>
+						<table class="table table-bordered">
+							<tr>
+							  <th class="haba">購入日</th>
+							  <td class="haba"><%= @order.created_at %></td>
+							  <th class="haba">金額</th>
+							  <% @order.order_details.each do |sk3| %>
+							  <td>
+							  	<% sk3.purchase_price %>
+							  </td>
+							  <th class="haba">ステータス</th>
+							  <td class="haba"><%= @order.order_status %></td>
+							</tr>
+							<tr>
+								<th width="300">商品タイトル</th>
+								<th class="haba2">個数</th>
+								<th class="haba2">金額</th>
+							</tr>
+							<tr>
+								<td width="300"><%= sk3.item.item_name %></td>
+								<td class="haba2"><%= sk3.purchase_number %></td>
+								<td class="haba2"><%= sk3.purchase_price %></td>
+							</tr>
+							<% end %>
+							<tr>
+								<th>送付先</th>
+								<td class="haba3"><%= @order.shipping.shipping_first_name%><%= @order.shipping.shipping_last_name %>
+								</td>
+								<td class="haba3"><%= @order.shipping.shipping_address %></td>
+							</tr>
+						</table>
+</div>
