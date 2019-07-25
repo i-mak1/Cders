@@ -3,7 +3,7 @@
 		<div class="col-lg-8">
 
 
-			<%= form_for(@order, :url => {:controller => :orders, :action => :create}) do |f| %>
+			<%= form_for(@order, url: orders_confirm_path) do |f| %>
 			<h2 style="margin-bottom: 30px;"><span>支払い方法の選択</span></h2>
 					<h3>支払い方法</h3>
 					<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>
@@ -11,7 +11,7 @@
 
 			<% if @order.errors.any? %>
  				 <div id="error_explanation">
-   				 <h4 style="color: red;">送付先を選択してください</h2>
+   				 <h4 style="color: red;">※送付先を選択してください</h2>
 
  				 </div>
 			<% end %>
@@ -65,9 +65,9 @@
 				<% @carts.each do |cart| %>
 					<tr>
 						<td><%= cart.item.item_name %></td>
-						<td><%= (cart.item.price * BigDecimal("1.08")).round %>円</td>
+						<td><%= (cart.item.price * BigDecimal("1.08")).round %>円(税込)</td>
 						<td><%= cart.quantity %>枚</td>
-						<td><%= (cart.item.price * BigDecimal("1.08")).round * cart.quantity %>円</td>
+						<td><%= (cart.item.price * BigDecimal("1.08")).round * cart.quantity %>円(税込)</td>
 					</tr>
 				<% end %>
 				</tbody>
@@ -78,10 +78,10 @@
 			<% @carts.each do |cart| %>
 				<% sum = sum + (cart.item.price * BigDecimal("1.08")).round * cart.quantity %>
 			<% end %>
-			<p style="font-size: 30px; text-align: right;">商品の小計：<%= sum %> 円</p>
+			<p style="font-size: 30px; text-align: right;">商品の小計：<%= sum %> 円(税込)</p>
 			<p style="font-size: 30px; text-align: right; border-bottom: solid 1px;">送料:500 円</p>
-			<p style="font-size: 30px; text-align: right;">合計:<%= sum + 500 %> 円</p>
-			<p style="margin-bottom: 5px;"><%= f.submit "注文を確定する", class: "btn btn-default" %></p>
+			<p style="font-size: 30px; text-align: right;">合計:<%= sum + 500 %> 円(税込)</p>
+			<p style="margin-bottom: 5px;"><%= f.submit "最終確認へ進む", class: "btn btn-default" %></p>
 		</div>
 			<% end %>
 	</div>

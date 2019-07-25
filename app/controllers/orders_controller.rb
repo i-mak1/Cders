@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.find(params[:id])
+    @order = Order.new(order_params)
     @carts = current_enduser.carts
   end
 

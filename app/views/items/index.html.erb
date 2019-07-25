@@ -41,7 +41,7 @@
 					  <td>在庫数:<%= item.stock_number %>枚</td>
 					</tr>
 					<tr>
-					  <td><%= (item.price * BigDecimal("1.08")).round %>円</td>
+					  <td><%= (item.price * BigDecimal("1.08")).round %>円(税込)</td>
 					</tr>
 					<% if item.stock_number == 0 %>
 					<tr>
@@ -77,7 +77,7 @@
 					  <%= link_to rank.item_name, item_path(rank) %>
 					</div>
 					<div>
-					   <%= (rank.price * BigDecimal("1.08")).round %>円
+					   <%= (rank.price * BigDecimal("1.08")).round %>円(税込)
 					</div>
 				</div>
 			<% end %>
