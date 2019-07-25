@@ -3,7 +3,8 @@ class EndusersController < ApplicationController
   def show
     @enduser = Enduser.find(params[:id])
     @shipping = @enduser.shippings
-    @order = @enduser.orders
+    @order = @enduser.orders.sort_by {|record| record.created_at}.reverse!
+
   end
 
   def edit
