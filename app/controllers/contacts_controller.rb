@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   	@contact = Contact.new(contact_params)
     @contact.enduser_id = current_enduser.id
       if @contact.save
-  	    flash[:notice] = "お問い合わせを承りました。"
+  	    flash[:notice] = "お問い合わせを承りました。回答につきましては、メールにてご連絡致します。"
   	    redirect_to items_path
       else
         render :new
