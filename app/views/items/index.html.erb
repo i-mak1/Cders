@@ -5,11 +5,13 @@
 <!-- スライドショー部分 -->
 <div id="container">
         <div id="theTarget">
-            <div style="background-image: url(assets/test1.jpg)"></div>
-            <div style="background-image: url(assets/test2.jpg)"></div>
-            <div style="background-image: url(assets/test3.jpg)"></div>
-            <div style="background-image: url(assets/test4.jpg)"></div>
-            <div style="background-image: url(assets/test5.jpg)"></div>
+        	<% @item_rank.each do |rank| %>
+			<div>
+			<%= link_to item_path(rank) do %>
+			<%= attachment_image_tag rank, :item_image, :fill, 700, 400, format: 'jpeg', fallback: "no_image.jpg" %>
+			<% end %>
+			</div>
+			<% end %>
         </div>
 </div>
 <!-- 商品一覧ページ -->
