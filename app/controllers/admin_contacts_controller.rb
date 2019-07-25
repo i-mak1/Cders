@@ -2,7 +2,7 @@ class AdminContactsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-  	@contact = Contact.all
+  	@contact = Contact.all.order(id: 'DESC')
   end
 
   def show
