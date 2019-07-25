@@ -16,10 +16,6 @@ class OrdersController < ApplicationController
     @carts = current_enduser.carts
   end
 
-  def payment
-     @order = Order.find(params[:id])
-  end
-
   def create
     @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
@@ -46,7 +42,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @carts = current_enduser.carts
   end
-
 
   def complete
   end

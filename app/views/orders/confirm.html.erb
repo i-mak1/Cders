@@ -48,7 +48,7 @@
 					<p style="font-size: 30px;">商品の小計：<%= sum %> 円</p><br>
 			<p style="font-size: 30px;">送料     :  500 円</p><br><br>
 			<p style="font-size: 30px;">合計     :  <%= sum + 500 %> 円</p>
-			<%= link_to "注文を確定する", orders_complete_path, class: "btn btn-default" %>
+			<%= link_to "注文を確定する", purchase_path, method: :post, class: "btn btn-default" %>
 		</div>
 	</div>
 
@@ -100,7 +100,7 @@
 			</table>
 		</div>
 		<div class="col-lg-5" style="margin-top: 55px;">
-			<%= link_to "変更", "/carts/:id", class: "btn btn-default" %>
+			<%= link_to "変更", carts_path, class: "btn btn-default" %>
 		</div>
 	</div>
 
