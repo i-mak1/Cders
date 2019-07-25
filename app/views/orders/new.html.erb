@@ -4,7 +4,6 @@
 
 
 			<%= form_for(@order, :url => {:controller => :orders, :action => :create}) do |f| %>
-
 			<h2 style="margin-bottom: 30px;"><span>支払い方法の選択</span></h2>
 					<h3>支払い方法</h3>
 					<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>

@@ -9,12 +9,7 @@
 			</div>
 			<% if @contact.errors.any? %>
 				<div id="error_explanation" style="color: red;">
-					<h3> <%= @contact.errors.count %>件のエラーが発生しました。</h3>
-					<ul>
-					<% @contact.errors.full_messages.each do |message| %>
-					<li> <%= message %> </li>
-				<% end %>
-					</ul>
+					<h3>お問い合わせ内容を入力してください</h3>
 				</div>
 				<% end %>
 			<div>

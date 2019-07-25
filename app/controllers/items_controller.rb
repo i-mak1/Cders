@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
   	@items = Item.page(params[:page]).reverse_order.search(params[:search])
-    @item_rank = Item.joins(:order_details).select('items.*, order_details.id, order_id, sum(order_details.purchase_number) as purchase_number_count').group("order_details.id").order('purchase_number_count desc').limit(5)
+    @item_rank = Item.joins(:order_details).select('items.*, order_details.purchase_number, sum(order_details.purchase_number) as purchase_number_count').group("order_details.item_id").order('purchase_number_count desc').limit(5)
   end
 
   def show
