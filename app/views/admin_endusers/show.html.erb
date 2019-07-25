@@ -39,7 +39,7 @@
 							  	
 							  </td>
 							  <th class="haba">ステータス</th>
-							  <td class="haba"><%= sk2_order.order_status %></td>
+							  <td class="haba"><%= sk2.order_status %></td>
 							</tr>
 							<tr>
 								<th width="300">商品タイトル</th>
@@ -53,9 +53,9 @@
 							</tr>
 							<tr>
 								<th>送付先</th>
-								<td class="haba3"><%= sk2_shippings.shipping_first_name%><%= sk2_shippings.shipping_last_name %>
+								<td class="haba3"><%= sk2.shippings.shipping_first_name%><%= sk2.shippings.shipping_last_name %>
 								</td>
-								<td class="haba3"><%= sk2_shippings.shipping_address %></td>
+								<td class="haba3"><%= sk2.shippings.shipping_address %></td>
 							</tr>
 						<% end %>
 						</table>

@@ -1,21 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-
-
-			<%= form_for(@order, :url => {:controller => :orders, :action => :create}) do |f| %>
+		<%= form_for(@order, :url => {:controller => :orders, :action => :create}) do |f| %>
 			<h2 style="margin-bottom: 30px;"><span>支払い方法の選択</span></h2>
-					<h3>支払い方法</h3>
-					<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>
-			<h2 style="margin-bottom: 30px;"><span>お届け先住所の選択</span></h2>
+			<h3>支払い方法</h3>
+			<%= f.select :payment, Order.payments.keys, {}, class: "select-default" %>
 
+			<h2 style="margin-bottom: 30px;"><span>お届け先住所の選択</span></h2>
 			<% if @order.errors.any? %>
  				 <div id="error_explanation">
    				 <h4 style="color: red;">送付先を選択してください</h2>
-
  				 </div>
 			<% end %>
-
 			<h3 style="margin-bottom: 30px;"> 登録住所</h3>
 				<% @shippings.each do |shipping| %>
 					<div style=" font-size: 15px; margin-bottom: 15px; border: solid 1px; width:450px;">
@@ -47,7 +43,7 @@
 					</div>
 				<% end %>
 				<div style="margin-bottom: 10px;">
-					<%= link_to "新しい送付先を追加", shippings_new_path, class: "btn btn-default btn-lg" %>
+					<%= link_to "新しい送付先を追加", new_shipping_path, class: "btn btn-default btn-lg" %>
 				</div>
 		</div>
 		<div class="col-lg-4" style="border: solid 2px;">
@@ -60,7 +56,7 @@
 						<th width="50">数量</th>
 						<th width="100">小計</th>
 					</tr>
-					</thead>
+				</thead>
 				<tbody>
 				<% @carts.each do |cart| %>
 					<tr>
@@ -82,7 +78,7 @@
 			<p style="font-size: 30px; text-align: right; border-bottom: solid 1px;">送料:500 円</p>
 			<p style="font-size: 30px; text-align: right;">合計:<%= sum + 500 %> 円</p>
 			<p style="margin-bottom: 5px;"><%= f.submit "注文を確定する", class: "btn btn-default" %></p>
+		<% end %>
 		</div>
-			<% end %>
 	</div>
 </div>
