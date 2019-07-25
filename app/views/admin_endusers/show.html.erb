@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<h2>ユーザー情報</h2><br>
 					<ul>
 						<li>
-							<%= @enduser.first_name_kana  +  @enduser.last_name_kana %>
+							<%= @enduser.first_name_kana + @enduser.last_name_kana %>
 						</li>
 						<li>
 							<%= @enduser.first_name + @enduser.last_name %>
@@ -16,48 +16,56 @@
 							<%= @enduser.address %>
 						</li>
 						<li>
-						<%= @enduser.email %>
+							<%= @enduser.email %>
 						</li>
 						<li>
 							<%= @enduser.tel %>
 						</li>
 							<%= link_to "編集", edit_admin_enduser_path, class: 'btn btn-default' %>
-							<%= link_to "削除", admin_enduser_path(@enduser.id),method: :delete, class: 'btn btn-default' ,"data-confirm" => "本当に削除しますか？" %>
+							<%= link_to "削除", admin_enduser_path(@enduser.id), method: :delete, class: 'btn btn-default' ,"data-confirm" => "本当に削除しますか？" %>
 					</ul>
-				</div>
-					<div class="col-md-6">
-						<h2>購入履歴</h2>
-						<table>
-						<% @orders.each do |sk2| %>
-							<tr>
-							  <th class="haba">購入日</th>
-							  <td class="haba"><%= sk2.created_at %></td>
-							  <th class="haba">金額</th>
-							  <td>
-							  	
-							  	
-							  	
-							  </td>
-							  <th class="haba">ステータス</th>
-							  <td class="haba"><%= sk2.order_status %></td>
+		</div>
+		<div class="col-md-7">
+			<h2>購入履歴</h2><br>
+			<% @order.each do |sk2| %>
+						<table border="2">
+							<tr class="buy_log">
+								<th>購入日</th>
+								<td><%= sk2.created_at %></td>
+								<th>総額</th>
+								<td width="100"><%= sk2.order_details.sum(:purchase_price) %>円</td>
+								<th>ステータス</th>
+								<td><%= sk2.order_status %></td>
 							</tr>
-							<tr>
-								<th width="300">商品タイトル</th>
-								<th class="haba2">個数</th>
-								<th class="haba2">金額</th>
-							</tr>
-							<tr>
-								<td width="300"><%= sk2.item.item_name %></td>
-								<td class="haba2"><%= sk2.purchase_number %></td>
-								<td class="haba2"><%= sk2.purchase_price %></td>
-							</tr>
-							<tr>
-								<th>送付先</th>
-								<td class="haba3"><%= sk2.shippings.shipping_first_name%><%= sk2.shippings.shipping_last_name %>
-								</td>
-								<td class="haba3"><%= sk2.shippings.shipping_address %></td>
-							</tr>
-						<% end %>
 						</table>
-					</div>
-				</div>
+						<% sk2.order_details.each do |sk3| %>
+						<table border="2">
+							<tr class="buy_log2">
+								<th width="320">商品タイトル</th>
+								<th>個数</th>
+								<th>小計</th>
+							</tr>
+							<tr>
+								<td height="50"><%= sk3.item.item_name %></td>
+								<td><%= sk3.purchase_number %></td>
+								<td width="50"><%= sk3.purchase_price%>円</td>
+							</tr>
+						</table>
+						<% end %>
+						<table border="2">
+							<tr class="buy_log3">
+								<th colspan="2" width="400">送付先</th>
+							</tr>
+							<tr>
+								<th>氏名</th>
+								<td><%= sk2.shipping.shipping_first_name + sk2.shipping.shipping_last_name %></td>
+							</tr>
+							<tr>
+								<th>住所</th>
+								<td><%= sk2.shipping.shipping_address %></td>
+							</tr>
+						</table><br><br>
+			<% end %>
+		</div>
+	</div>
+</div>

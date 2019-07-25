@@ -8,20 +8,21 @@
 			<table class="table table-borderd">
 				<thead>
 					<tr>
-						<th width="120px">ユーザー名</th>
+						<th width="100px">ユーザー名</th>
 						<th>購入日時</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @orders.each do |order| %>
-						<tr>
-							<td><%= order.enduser.first_name %><%= order.enduser.last_name %></td>
-							<td style="width: 250px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">
+					<tr>
+						<td><%= order.enduser.first_name %><%= order.enduser.last_name %></td>
+						<td style="width: 250px; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">
 								<%= simple_time(order[:created_at] ) %>
-							</td>
-							<td style="width: 100px; text-align: center;"><%= link_to "詳細画面", admin_order_path(order.id) %></td>
-						</tr>
+						</td>
+						<td style="width: 100px; text-align: center;"><%= link_to "詳細画面", admin_order_path(order.id) %>
+						</td>
+					</tr>
 					<% end %>
 				</tbody>
 			</table>

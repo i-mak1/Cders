@@ -4,7 +4,7 @@
 			<h2>ユーザー情報</h2><br>
 					<ul>
 						<li>
-							<%= @enduser.first_name_kana  +  @enduser.last_name_kana %>
+							<%= @enduser.first_name_kana + @enduser.last_name_kana %>
 						</li>
 						<li>
 							<%= @enduser.first_name + @enduser.last_name %>
@@ -16,7 +16,7 @@
 							<%= @enduser.address %>
 						</li>
 						<li>
-						<%= @enduser.email %>
+							<%= @enduser.email %>
 						</li>
 						<li>
 							<%= @enduser.tel %>
@@ -25,18 +25,16 @@
 					</ul>
 
 						<br><%= link_to "編集", edit_enduser_path, class: "btn btn-info col-md-10 col-md-offset-1" %>
-				</div>
-					<div class="col-md-7">
-						<h2>購入履歴</h2><br>
-
-							<% @order.each do |sk2| %>
-
+		</div>
+		<div class="col-md-7">
+			<h2>購入履歴</h2><br>
+			<% @order.each do |sk2| %>
 						<table border="2">
 							<tr class="buy_log">
 								<th>購入日</th>
 								<td><%= sk2.created_at %></td>
 								<th>総額</th>
-								<td width="100"><%= sk2.order_details.first.purchase_price %></td>
+								<td width="100"><%= sk2.order_details.sum(:purchase_price) %>円</td>
 								<th>ステータス</th>
 								<td><%= sk2.order_status %></td>
 							</tr>
@@ -44,14 +42,14 @@
 						<% sk2.order_details.each do |sk3| %>
 						<table border="2">
 							<tr class="buy_log2">
-								<th width="250">商品タイトル</th>
+								<th width="320">商品タイトル</th>
 								<th>個数</th>
 								<th>小計</th>
 							</tr>
 							<tr>
 								<td height="50"><%= sk3.item.item_name %></td>
 								<td><%= sk3.purchase_number %></td>
-								<td width="120"><%= sk3.item.price%></td>
+								<td width="50"><%= sk3.purchase_price %>円</td>
 							</tr>
 						</table>
 						<% end %>
@@ -68,7 +66,7 @@
 								<td><%= sk2.shipping.shipping_address %></td>
 							</tr>
 						</table><br><br>
-						<% end %>
-					</div>
-				</div>
-			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

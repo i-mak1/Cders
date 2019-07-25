@@ -6,11 +6,6 @@ class AdminOrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-    sum = 0
-    @order.order_details.each do |detail|
-      sum = sum + detail.purchase_price
-    end
-    @total_price = sum
   end
 
   def update
