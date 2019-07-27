@@ -2,9 +2,7 @@ class EndusersController < ApplicationController
   before_action :authenticate_enduser!, only: [:show, :edit, :update, :unsubscribe]
   def show
     @enduser = Enduser.find(params[:id])
-    @shipping = @enduser.shippings
     @order = @enduser.orders.sort_by {|record| record.created_at}.reverse!
-
   end
 
   def edit
@@ -14,6 +12,7 @@ class EndusersController < ApplicationController
   def update
     @enduser = Enduser.find(params[:id])
     @enduser.update(enduser_params)
+    redirect_to enduser_path(@enduser)
   end
 
   def destroy

@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @order.enduser_id = current_enduser.id
     @shippings = current_enduser.shippings
     @carts = current_enduser.carts
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new(order_params)
+    @order = Order.new
     @carts = current_enduser.carts
     @shippings = current_enduser.shippings
     if @shippings.blank?
@@ -50,12 +50,6 @@ class OrdersController < ApplicationController
   end
 
   def complete
-  end
-
-  private
-  def order_params
-    params.require(:order).permit(:payment,:enduser_id,:shipping_id,:confirm)
-
   end
 
 end

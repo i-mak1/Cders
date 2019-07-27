@@ -14,6 +14,5 @@ class ShippingsController < ApplicationController
    private
   def shipping_params
     params.require(:shipping).permit(:enduser_id, :shipping_first_name_kana, :shipping_last_name_kana, :shipping_first_name, :shipping_last_name, :shipping_postcode, :shipping_address)
-
   end
 end
