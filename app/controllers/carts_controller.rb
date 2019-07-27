@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
   before_action :authenticate_enduser!
-
   before_action :check_id, only:[:create]
 
   def index
@@ -58,7 +57,5 @@ private
 
   def cart_params
     params.require(:cart).permit(:enduser_id, :item_id,:quantity)
-
   end
-
 end

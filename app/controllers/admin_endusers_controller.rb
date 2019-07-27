@@ -6,8 +6,7 @@ class AdminEndusersController < ApplicationController
 
   def show
     @enduser = Enduser.find(params[:id])
-    @shippings = Shipping.where(enduser_id: @enduser.id)
-    @orders = Order.where(enduser_id: @enduser.id)
+    @order = @enduser.orders.sort_by {|record| record.created_at}.reverse!
   end
 
   def edit
@@ -17,7 +16,7 @@ class AdminEndusersController < ApplicationController
   def update
     @enduser = Enduser.find(params[:id])
     if @enduser.update(enduser_params)
-     redirect_to enduser_path(@enduser)
+     redirect_to admin_enduser_path(@enduser)
     else
       render :edit
     end

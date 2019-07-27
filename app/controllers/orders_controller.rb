@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   before_action :check_carts, only:[:new, :create]
-  before_action :check_shippings, only:[:confirm]
   before_action :authenticate_enduser!
 
   def check_carts
@@ -18,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @order.enduser_id = current_enduser.id
     @shippings = current_enduser.shippings
     @carts = current_enduser.carts
@@ -40,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new(order_params)
+    @order = Order.new
     @carts = current_enduser.carts
     @shippings = current_enduser.shippings
     if @shippings.blank?
@@ -52,6 +51,5 @@ class OrdersController < ApplicationController
 
   def complete
   end
-
 
 end

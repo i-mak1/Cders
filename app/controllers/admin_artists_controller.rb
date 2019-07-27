@@ -2,7 +2,6 @@ class AdminArtistsController < ApplicationController
   before_action :authenticate_admin!
   def new
   	@artist = Artist.new
-
   end
 
   def create
@@ -19,7 +18,5 @@ class AdminArtistsController < ApplicationController
   def artist_params
     params.require(:artist)
           .permit(:artist_name)
-
   end
-
 end

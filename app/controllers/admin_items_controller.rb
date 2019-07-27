@@ -4,7 +4,6 @@ class AdminItemsController < ApplicationController
     @items = Item.page(params[:page]).reverse_order.search(params[:search])
   end
 
-
   def show
     @item = Item.includes(:disks => :songs).find(params[:id])
   end
@@ -51,7 +50,6 @@ private
 
   def item_params
     params.require(:item).permit(:item_status, :item_name, :stock_number, :artist_id, :price, :label_id, :genre_id, :item_image, disks_attributes: [:id, :disk_name, :_destroy, songs_attributes: [:id, :song_name, :track, :_destroy]])
-
   end
 end
 
