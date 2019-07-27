@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     @carts = current_enduser.carts
     @shipping = Shipping.find_by(id: params[:order][:shipping_id])
     if @shipping.blank?
-      flash[:notice] = "送付先を登録、選択してください。"
+      flash[:notice] = "送付先を登録してください。"
       redirect_to orders_new_path
     else :confirm
     end
@@ -52,10 +52,11 @@ class OrdersController < ApplicationController
   def complete
   end
 
-  private
 
+ private
   def order_params
-    params.require(:order).permit(:enduser_id, :shipping_id,:payment)
+    params.require(:order).permit(:payment,:enduser_id,:shipping_id)
+
   end
 
 end
