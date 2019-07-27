@@ -4,22 +4,22 @@
 			<h2>ユーザー情報</h2><br>
 					<ul>
 						<li>
-							<%= @enduser.first_name_kana + @enduser.last_name_kana %>
+							カナ：<%= @enduser.first_name_kana + @enduser.last_name_kana %>
 						</li>
 						<li>
-							<%= @enduser.first_name + @enduser.last_name %>
+							名前：<%= @enduser.first_name + @enduser.last_name %>
 						</li>
 						<li>
-							<%= @enduser.postcode %>
+							郵便番号：<%= @enduser.postcode %>
 						</li>
 						<li>
-							<%= @enduser.address %>
+							住所：<%= @enduser.address %>
 						</li>
 						<li>
-							<%= @enduser.email %>
+							メールアドレス：<%= @enduser.email %>
 						</li>
 						<li>
-							<%= @enduser.tel %>
+							電話番号：<%= @enduser.tel %>
 						</li>
 
 					</ul>
@@ -32,7 +32,7 @@
 						<table border="2">
 							<tr class="buy_log">
 								<th>購入日</th>
-								<td><%= sk2.created_at %></td>
+								<td><%= simple_time(sk2[:created_at] ) %></td>
 								<th>総額</th>
 								<td width="100"><%= sk2.order_details.sum(:purchase_price) %>円</td>
 								<th>ステータス</th>
