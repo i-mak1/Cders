@@ -16,23 +16,23 @@
 						<table>
 							<tbody>
 								<tr>
-									<td width="150"> セイ:<%= @order.shipping.shipping_first_name_kana %></td>
-									<td width="150"> メイ:<%= @order.shipping.shipping_last_name_kana %></td>
+									<td width="150"> セイ:<%= @shipping.shipping_first_name_kana %></td>
+									<td width="150"> メイ:<%= @shipping.shipping_last_name_kana %></td>
 								</tr>
 								<tr>
-									<td width="150"> 姓:<%= @order.shipping.shipping_first_name %></td>
-									<td width="150"> 名:<%= @order.shipping.shipping_last_name %></td>
+									<td width="150"> 姓:<%= @shipping.shipping_first_name %></td>
+									<td width="150"> 名:<%= @shipping.shipping_last_name %></td>
 								</tr>
 							</tbody>
 						</table>
 						<table>
 							<tbody>
 								<tr>
-									<td width="200"> 〒<%= @order.shipping.shipping_postcode %></td>
+									<td width="200"> 〒<%= @shipping.shipping_postcode %></td>
 								</tr>
 								<tr>
 									<td width="450">住所<br>
-										<%= @order.shipping.shipping_address %>
+										<%= @shipping.shipping_address %>
 									</td>
 								</tr>
 							</tbody>
