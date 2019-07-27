@@ -39,10 +39,10 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
+    @order =  Order.new
     @carts = current_enduser.carts
-    @shippings = current_enduser.shippings
-    if @shippings.blank?
+    @shipping = Shipping.find_by(id: params[:order][:shipping_id])
+    if @shipping.blank?
       flash[:notice] = "送付先を登録、選択してください。"
       redirect_to orders_new_path
     else :confirm
