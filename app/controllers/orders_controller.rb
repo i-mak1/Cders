@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
   def complete
   end
 
+
  private
   def order_params
     params.require(:order).permit(:payment,:enduser_id,:shipping_id)
