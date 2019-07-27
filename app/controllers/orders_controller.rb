@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.enduser_id = current_enduser.id
     @shippings = current_enduser.shippings
     @carts = current_enduser.carts
@@ -39,17 +39,24 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
+    @order =  Order.new(order_params)
     @carts = current_enduser.carts
-    @shippings = current_enduser.shippings
-    if @shippings.blank?
-      flash[:notice] = "送付先を登録、選択してください。"
+    @shipping = Shipping.find_by(id: params[:order][:shipping_id])
+    if @shipping.blank?
+      flash[:notice] = "送付先を登録してください。"
       redirect_to orders_new_path
     else :confirm
     end
   end
 
   def complete
+  end
+
+
+ private
+  def order_params
+    params.require(:order).permit(:payment,:enduser_id,:shipping_id)
+
   end
 
 end
