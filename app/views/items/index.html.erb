@@ -62,13 +62,13 @@
 		<div class="col-lg-3">
 			<h2 id="title">RANKING</h2>
 			<div id="subtitle">人気Top 5</div>
-			<div style="border: solid 1px; margin-bottom: 10px;">
+			<div style="border: solid 3px; margin-bottom: 10px;">
 			<% @item_rank.each.with_index(1) do |rank,i| %>
 				<div id="rankbox">
-					<div style="font-size: 20px;">
-						<%= "No.#{i}" %>
+					<div style="font-size: 22px; width: 70px; color: white; background-color: black; text-align: center;">
+						<strong><%= "No.#{i}" %></strong>
 					</div>
-					<div>
+					<div style="border: solid 1px; border-color: silver; width: 200px;">
 					  <%= link_to item_path(rank) do %>
 					  <%= attachment_image_tag rank, :item_image, :fill, 200, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 					  <% end %>
