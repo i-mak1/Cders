@@ -1,17 +1,23 @@
 class AdminItemsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @items = Item.page(params[:page]).reverse_order.search(params[:search])
+    @items = Item.page(params[:page]).reverse_order.search(params[:search]).without_deleted
   end
 
   def show
     @item = Item.includes(:disks => :songs).find(params[:id])
+    if @item.deleted?
+      redirect_to admin_items_path
+    end
   end
 
   def edit
     @item = Item.find(params[:id])
     @disk = @item.disks.build
     @song = @disk.songs.build
+    if @item.deleted?
+      redirect_to admin_items_path
+    end
   end
 
   def destroy

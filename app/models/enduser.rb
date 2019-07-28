@@ -1,5 +1,5 @@
 class Enduser < ApplicationRecord
-  acts_as_paranoid
+  acts_as_paranoid without_default_scope: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
