@@ -3,10 +3,16 @@ class EndusersController < ApplicationController
   def show
     @enduser = Enduser.find(params[:id])
     @order = @enduser.orders.sort_by {|record| record.created_at}.reverse!
+    unless @enduser == current_enduser
+      redirect_to enduser_path(current_enduser)
+    end
   end
 
   def edit
     @enduser = Enduser.find(params[:id])
+    unless @enduser == current_enduser
+      redirect_to enduser_path(current_enduser)
+    end
   end
 
   def update
@@ -23,6 +29,10 @@ class EndusersController < ApplicationController
    end
 
   def unsubscribe
+    @enduser = Enduser.find(params[:id])
+    unless @enduser == current_enduser
+      redirect_to enduser_path(current_enduser)
+    end
   end
 
   def complete
