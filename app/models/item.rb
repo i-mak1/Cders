@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-acts_as_paranoid
+acts_as_paranoid without_default_scope: true
 
 has_many :carts, dependent: :destroy
 has_many :disks, inverse_of: :item, dependent: :destroy

@@ -1,16 +1,22 @@
 class AdminEndusersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @endusers = Enduser.all
+    @endusers = Enduser.all.without_deleted
   end
 
   def show
     @enduser = Enduser.find(params[:id])
     @order = @enduser.orders.sort_by {|record| record.created_at}.reverse!
+    if @enduser.deleted?
+      redirect_to admin_endusers_path
+    end
   end
 
   def edit
     @enduser = Enduser.find(params[:id])
+    if @enduser.deleted?
+      redirect_to admin_endusers_path
+    end
   end
 
   def update
